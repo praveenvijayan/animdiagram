@@ -10,16 +10,16 @@
    "travel": 0.4,
    "from": [
     44,
-    180
+    152
    ],
    "to": [
     112,
-    180
+    152
    ],
    "ring": false,
    "glow": {
     "x": 112,
-    "y": 152,
+    "y": 124,
     "w": 80,
     "h": 56
    }
@@ -27,22 +27,22 @@
   {
    "id": "q2",
    "kind": "packet",
-   "note": "authenticated request to the frontend",
+   "note": "authenticated request to the frontend's chat interface",
    "after": "q1",
    "travel": 0.3,
    "from": [
     192,
-    180
+    152
    ],
    "to": [
     232,
-    180
+    152
    ],
    "glow": {
     "x": 232,
-    "y": 152,
+    "y": 124,
     "w": 112,
-    "h": 56
+    "h": 72
    }
   },
   {
@@ -53,16 +53,43 @@
    "travel": 0.4,
    "from": [
     344,
-    172
+    152
    ],
    "to": [
     400,
-    172
+    152
    ],
    "glow": {
     "x": 400,
-    "y": 152,
+    "y": 132,
     "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "q3b",
+   "kind": "packet",
+   "note": "responsible ai check runs in parallel",
+   "with": "q3",
+   "travel": 0.5,
+   "from": [
+    248,
+    196
+   ],
+   "via": [
+    [
+     248,
+     240
+    ]
+   ],
+   "to": [
+    192,
+    240
+   ],
+   "glow": {
+    "x": 112,
+    "y": 212,
+    "w": 80,
     "h": 56
    }
   },
@@ -86,11 +113,11 @@
    "travel": 0.4,
    "from": [
     400,
-    188
+    168
    ],
    "to": [
     344,
-    188
+    168
    ],
    "label": "CHUNKS",
    "label_dy": 14
@@ -103,15 +130,15 @@
    "travel": 0.4,
    "from": [
     272,
-    208
+    196
    ],
    "to": [
     272,
-    256
+    228
    ],
    "glow": {
     "x": 232,
-    "y": 256,
+    "y": 228,
     "w": 112,
     "h": 56
    }
@@ -136,14 +163,14 @@
    "travel": 0.4,
    "from": [
     304,
-    256
+    228
    ],
    "to": [
     304,
-    208
+    196
    ],
    "label": "ANSWER",
-   "label_dy": -14
+   "label_dy": -10
   },
   {
    "id": "q7",
@@ -153,21 +180,21 @@
    "travel": 1.2,
    "from": [
     256,
-    152
+    124
    ],
    "via": [
     [
      256,
-     136
+     108
     ],
     [
      40,
-     136
+     108
     ]
    ],
    "to": [
     40,
-    172
+    144
    ]
   },
   {
@@ -184,16 +211,26 @@
   {
    "id": "s1",
    "kind": "stream",
-   "note": "raw docs pulled into the ray job",
+   "note": "internal and external sources land raw data in the bucket",
    "from": [
-    536,
-    284
+    556,
+    324
+   ],
+   "via": [
+    [
+     556,
+     308
+    ],
+    [
+     592,
+     308
+    ]
    ],
    "to": [
-    512,
+    592,
     284
    ],
-   "period": 1.6,
+   "period": 1.8,
    "count": 2,
    "color": "#02BEFA",
    "r": 2.5
@@ -201,20 +238,55 @@
   {
    "id": "s2",
    "kind": "stream",
-   "note": "embeddings stored in cloud sql",
+   "note": "ray job reads the bucket over the fuse csi driver",
    "from": [
-    456,
+    552,
     256
    ],
    "to": [
-    456,
-    208
+    528,
+    256
    ],
-   "period": 1.6,
+   "period": 1.8,
    "count": 2,
    "color": "#02BEFA",
    "r": 2.5,
-   "phase": 0.8
+   "phase": 0.6
+  },
+  {
+   "id": "s3",
+   "kind": "stream",
+   "note": "embeddings stored in cloud sql",
+   "from": [
+    456,
+    212
+   ],
+   "to": [
+    456,
+    188
+   ],
+   "period": 1.8,
+   "count": 2,
+   "color": "#02BEFA",
+   "r": 2.5,
+   "phase": 1.2
+  },
+  {
+   "id": "s4",
+   "kind": "stream",
+   "note": "inference server streams logs, metrics and analytics",
+   "from": [
+    288,
+    284
+   ],
+   "to": [
+    288,
+    324
+   ],
+   "period": 1.4,
+   "count": 2,
+   "color": "#02BEFA",
+   "r": 2.5
   }
  ]
 }

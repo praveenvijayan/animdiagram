@@ -130,15 +130,17 @@
       "source": "Google Cloud Architecture Center · RAG-capable generative AI app using GKE",
       "claim": "Retrieval runs before generation; the model only ever sees a prompt already stuffed with the nearest chunks.",
       "primitives": [
-        "two zones",
+        "two subsystems + spanning cluster",
         "packets",
+        "parallel safety check",
         "labelled reply",
         "generate phase in amber",
         "return corridor",
-        "two ambient streams",
-        "passive sink"
+        "four ambient streams",
+        "inner tiles",
+        "passive sinks"
       ],
-      "cuts": "Responsible AI service, logging / monitoring / analytics, chat interface as a separate box, Ray Data sharding step, Cloud Storage FUSE driver, external vs internal sources."
+      "cuts": "Nothing structural: every box in the source is present (chat interface and Ray parts as inner tiles, logging / monitoring / analytics as one sink with three tiles). Region label and the Google Cloud banner dropped. Over the skill's budget on purpose: 9 story packets, 4 streams."
     }
   ]
 }

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="660" height="440" viewBox="0 0 660 440" fill="none" role="img" aria-label="RAG-capable app on GKE: a user prompt passes Identity-Aware Proxy to the frontend, which runs a semantic search in Cloud SQL with pgvector, gets the nearest chunks back, sends the contextualized prompt to the TGI inference server, receives the answer and returns it through the proxy, while a Ray job keeps embedding raw documents from the bucket into Cloud SQL.">
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="480" viewBox="0 0 660 480" fill="none" role="img" aria-label="RAG app on GKE, all components: users pass Identity-Aware Proxy to the frontend and its chat interface, which searches Cloud SQL pgvector and checks Responsible AI in parallel, sends the stuffed prompt to the TGI inference server and returns the answer. Meanwhile internal and external sources fill the bucket, a Ray job embeds them into Cloud SQL, and inference streams logs, metrics and analytics.">
   <style>
     /* ---- type ramp (light skin) --------------------------------------- */
     text { font-family: 'Source Code Pro', ui-monospace, Menlo, Consolas, monospace; }
@@ -34,7 +34,7 @@
       7.2%, 100% { transform: translate(68px, 0px); opacity: 0; }
     }
     @keyframes q1-glow { 0%, 6% { opacity: 0; } 6.8% { opacity: 0.18; } 10%, 100% { opacity: 0; } }
-    /* q2: authenticated request to the frontend */
+    /* q2: authenticated request to the frontend's chat interface */
     @keyframes q2 {
       0%, 9% { transform: translate(0, 0); opacity: 0; }
       9.6% { opacity: 1; }
@@ -52,6 +52,16 @@
     }
     @keyframes q3-ring { 0%, 19% { transform: scale(0.4); opacity: 0; } 19.4% { transform: scale(0.5); opacity: 0.8; } 24%, 100% { transform: scale(1.4); opacity: 0; } }
     @keyframes q3-glow { 0%, 19% { opacity: 0; } 19.8% { opacity: 0.18; } 23%, 100% { opacity: 0; } }
+    /* q3b: responsible ai check runs in parallel */
+    @keyframes q3b {
+      0%, 15% { transform: translate(0, 0); opacity: 0; }
+      15.6% { opacity: 1; }
+      17.2% { transform: translate(0px, 44px); }
+      20% { transform: translate(-56px, 44px); opacity: 1; }
+      21.2%, 100% { transform: translate(-56px, 44px); opacity: 0; }
+    }
+    @keyframes q3b-ring { 0%, 20% { transform: scale(0.4); opacity: 0; } 20.4% { transform: scale(0.5); opacity: 0.8; } 25%, 100% { transform: scale(1.4); opacity: 0; } }
+    @keyframes q3b-glow { 0%, 20% { opacity: 0; } 20.8% { opacity: 0.18; } 24%, 100% { opacity: 0; } }
     /* ph1: act 1 */
     @keyframes ph1 { 0%, 28% { opacity: 1; } 29%, 100% { opacity: 0; } }
     /* q4: nearest chunks come back */
@@ -66,8 +76,8 @@
     @keyframes q5 {
       0%, 31% { transform: translate(0, 0); opacity: 0; }
       31.6% { opacity: 1; }
-      35% { transform: translate(0px, 48px); opacity: 1; }
-      36.2%, 100% { transform: translate(0px, 48px); opacity: 0; }
+      35% { transform: translate(0px, 32px); opacity: 1; }
+      36.2%, 100% { transform: translate(0px, 32px); opacity: 0; }
     }
     @keyframes q5-ring { 0%, 35% { transform: scale(0.4); opacity: 0; } 35.4% { transform: scale(0.5); opacity: 0.8; } 40%, 100% { transform: scale(1.4); opacity: 0; } }
     @keyframes q5-glow { 0%, 35% { opacity: 0; } 35.8% { opacity: 0.18; } 39%, 100% { opacity: 0; } }
@@ -77,8 +87,8 @@
     @keyframes q6 {
       0%, 47% { transform: translate(0, 0); opacity: 0; }
       47.6% { opacity: 1; }
-      51% { transform: translate(0px, -48px); opacity: 1; }
-      52.2%, 100% { transform: translate(0px, -48px); opacity: 0; }
+      51% { transform: translate(0px, -32px); opacity: 1; }
+      52.2%, 100% { transform: translate(0px, -32px); opacity: 0; }
     }
     @keyframes q6-ring { 0%, 51% { transform: scale(0.4); opacity: 0; } 51.4% { transform: scale(0.5); opacity: 0.8; } 56%, 100% { transform: scale(1.4); opacity: 0; } }
     /* q7: response returns through the proxy */
@@ -93,19 +103,35 @@
     @keyframes q7-ring { 0%, 66% { transform: scale(0.4); opacity: 0; } 66.4% { transform: scale(0.5); opacity: 0.8; } 71%, 100% { transform: scale(1.4); opacity: 0; } }
     /* ph3: act 3 */
     @keyframes ph3 { 0%, 56% { opacity: 0; } 57%, 76% { opacity: 1; } 77%, 100% { opacity: 0; } }
-    /* s1: raw docs pulled into the ray job */
+    /* s1: internal and external sources land raw data in the bucket */
     @keyframes s1 {
+      0% { transform: translate(0, 0); opacity: 0; }
+      12% { opacity: 1; }
+      28% { transform: translate(0px, -16px); }
+      64% { transform: translate(36px, -16px); }
+      88% { transform: translate(36px, -40px); opacity: 1; }
+      100% { transform: translate(36px, -40px); opacity: 0; }
+    }
+    /* s2: ray job reads the bucket over the fuse csi driver */
+    @keyframes s2 {
       0% { transform: translate(0, 0); opacity: 0; }
       12% { opacity: 1; }
       88% { transform: translate(-24px, 0px); opacity: 1; }
       100% { transform: translate(-24px, 0px); opacity: 0; }
     }
-    /* s2: embeddings stored in cloud sql */
-    @keyframes s2 {
+    /* s3: embeddings stored in cloud sql */
+    @keyframes s3 {
       0% { transform: translate(0, 0); opacity: 0; }
       12% { opacity: 1; }
-      88% { transform: translate(0px, -48px); opacity: 1; }
-      100% { transform: translate(0px, -48px); opacity: 0; }
+      88% { transform: translate(0px, -24px); opacity: 1; }
+      100% { transform: translate(0px, -24px); opacity: 0; }
+    }
+    /* s4: inference server streams logs, metrics and analytics */
+    @keyframes s4 {
+      0% { transform: translate(0, 0); opacity: 0; }
+      12% { opacity: 1; }
+      88% { transform: translate(0px, 40px); opacity: 1; }
+      100% { transform: translate(0px, 40px); opacity: 0; }
     }
     /* @/motion:css */
 
@@ -119,107 +145,151 @@
   </style>
 
   <!-- frame -->
-  <rect x="0.5" y="0.5" width="659" height="439" rx="12" fill="#F5F5F5" stroke="#D9DADB"/>
+  <rect x="0.5" y="0.5" width="659" height="479" rx="12" fill="#F5F5F5" stroke="#D9DADB"/>
   <text class="t-title" x="28" y="42">RAG ON GKE</text>
   <text class="t-sub" x="28" y="66">Retrieval runs before generation; the model only ever sees a prompt already stuffed with the nearest chunks.</text>
 
-  <!-- subsystems -->
-  <rect x="96" y="96" width="272" height="232" rx="12" fill="none" stroke="#BFC0C0" stroke-dasharray="4 4"/>
-  <text class="t-zone" x="112" y="118">SERVING</text>
-  <rect x="384" y="96" width="248" height="232" rx="12" fill="none" stroke="#BFC0C0" stroke-dasharray="4 4"/>
+  <!-- subsystems and the gke cluster that spans both -->
+  <rect x="96" y="96" width="288" height="328" rx="12" fill="none" stroke="#BFC0C0" stroke-dasharray="4 4"/>
+  <text class="t-zone" x="112" y="416">SERVING SUBSYSTEM</text>
+  <rect x="392" y="96" width="240" height="204" rx="12" fill="none" stroke="#BFC0C0" stroke-dasharray="4 4"/>
   <text class="t-zone" x="400" y="118">EMBEDDING · RAG</text>
+  <rect x="216" y="100" width="328" height="200" rx="10" fill="none" stroke="#D9DADB"/>
+  <text class="t-zone" x="536" y="292" text-anchor="end">GKE AUTOPILOT</text>
 
   <g stroke="#BFC0C0" stroke-width="1">
-    <line x1="44" y1="180" x2="112" y2="180"/>
-    <line x1="192" y1="180" x2="232" y2="180"/>
-    <line x1="344" y1="172" x2="400" y2="172"/>
-    <line x1="400" y1="188" x2="344" y2="188"/>
-    <line x1="272" y1="208" x2="272" y2="256"/>
-    <line x1="304" y1="256" x2="304" y2="208"/>
-    <path d="M256,152 V144 Q256,136 248,136 H48 Q40,136 40,144 V172"/>
-    <line x1="536" y1="284" x2="512" y2="284" stroke-dasharray="3 3"/>
-    <line x1="456" y1="256" x2="456" y2="208" stroke-dasharray="3 3"/>
+    <line x1="44" y1="152" x2="112" y2="152"/>
+    <line x1="192" y1="152" x2="232" y2="152"/>
+    <path d="M256,124 V116 Q256,108 248,108 H48 Q40,108 40,116 V144"/>
+    <line x1="344" y1="152" x2="400" y2="152"/>
+    <line x1="400" y1="168" x2="344" y2="168"/>
+    <path d="M248,196 V232 Q248,240 240,240 H192"/>
+    <line x1="272" y1="196" x2="272" y2="228"/>
+    <line x1="304" y1="228" x2="304" y2="196"/>
+    <line x1="456" y1="212" x2="456" y2="188" stroke-dasharray="3 3"/>
+    <line x1="552" y1="256" x2="528" y2="256" stroke-dasharray="3 3"/>
+    <path d="M556,324 V308 H628 V324" stroke-dasharray="3 3"/>
+    <line x1="592" y1="308" x2="592" y2="284" stroke-dasharray="3 3"/>
+    <line x1="288" y1="284" x2="288" y2="324" stroke-dasharray="3 3"/>
   </g>
   <g fill="#BFC0C0">
-    <polygon points="106,177 112,180 106,183"/>
-    <polygon points="226,177 232,180 226,183"/>
-    <polygon points="394,169 400,172 394,175"/>
-    <polygon points="350,185 344,188 350,191"/>
-    <polygon points="269,250 272,256 275,250"/>
-    <polygon points="301,214 304,208 307,214"/>
-    <polygon points="37,166 40,172 43,166"/>
-    <polygon points="518,281 512,284 518,287"/>
-    <polygon points="453,214 456,208 459,214"/>
+    <polygon points="106,149 112,152 106,155"/>
+    <polygon points="226,149 232,152 226,155"/>
+    <polygon points="37,138 40,144 43,138"/>
+    <polygon points="394,149 400,152 394,155"/>
+    <polygon points="350,165 344,168 350,171"/>
+    <polygon points="198,237 192,240 198,243"/>
+    <polygon points="269,222 272,228 275,222"/>
+    <polygon points="301,202 304,196 307,202"/>
+    <polygon points="453,194 456,188 459,194"/>
+    <polygon points="534,253 528,256 534,259"/>
+    <polygon points="589,290 592,284 595,290"/>
+    <polygon points="285,318 288,324 291,318"/>
   </g>
 
-  <circle cx="40" cy="180" r="4" fill="#4F5D75"/>
-  <text class="t-small" x="40" y="204" text-anchor="middle">USER</text>
+  <circle cx="40" cy="152" r="4" fill="#4F5D75"/>
+  <text class="t-small" x="40" y="176" text-anchor="middle">USERS</text>
 
-  <rect x="112" y="152" width="80" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="126" cy="169" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0s"/>
-  <text class="t-name" x="136" y="172">IAP</text>
-  <text class="t-desc" x="124" y="192">identity proxy</text>
-  <rect x="232" y="152" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <rect x="112" y="124" width="80" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <circle cx="126" cy="141" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0s"/>
+  <text class="t-name" x="136" y="144">IAP</text>
+  <text class="t-desc" x="124" y="164">identity-aware</text>
+  <!-- frontend server with its chat interface -->
+  <rect x="232" y="124" width="112" height="72" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <rect x="240" y="132" width="96" height="20" rx="6" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <text class="t-small" x="288" y="146" text-anchor="middle">CHAT INTERFACE</text>
   <circle cx="246" cy="169" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0.35s"/>
   <text class="t-name" x="256" y="172">FRONTEND</text>
-  <text class="t-desc" x="244" y="192">chat · builds prompt</text>
-  <rect x="400" y="152" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="414" cy="169" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0.7s"/>
-  <text class="t-name" x="424" y="172">CLOUD SQL</text>
-  <text class="t-desc" x="412" y="192">pgvector · HA</text>
-  <rect x="232" y="256" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="246" cy="273" r="2.5" fill="#15803D" class="tick" style="animation-delay:-1.05s"/>
-  <text class="t-name" x="256" y="276">INFERENCE</text>
-  <text class="t-desc" x="244" y="296">TGI · open LLM</text>
-  <rect x="400" y="256" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="414" cy="273" r="2.5" fill="#15803D" class="tick" style="animation-delay:-1.4s"/>
-  <text class="t-name" x="424" y="276">RAY JOB</text>
-  <text class="t-desc" x="412" y="296">chunk · embed</text>
-  <rect x="536" y="256" width="80" height="56" rx="7" fill="#F5F5F5" stroke="#BFC0C0"/>
-  <text class="t-name" x="548" y="276">BUCKET</text>
-  <text class="t-desc" x="548" y="296">raw docs</text>
+  <text class="t-desc" x="244" y="188">server · builds prompt</text>
+  <rect x="400" y="132" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <circle cx="414" cy="149" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0.7s"/>
+  <text class="t-name" x="424" y="152">CLOUD SQL</text>
+  <text class="t-desc" x="412" y="172">pgvector · HA</text>
+  <rect x="112" y="212" width="80" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <circle cx="126" cy="229" r="2.5" fill="#15803D" class="tick" style="animation-delay:-1.05s"/>
+  <text class="t-name" x="136" y="232">RESP. AI</text>
+  <text class="t-desc" x="124" y="252">safety service</text>
+  <rect x="232" y="228" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <circle cx="246" cy="245" r="2.5" fill="#15803D" class="tick" style="animation-delay:-1.4s"/>
+  <text class="t-name" x="256" y="248">INFERENCE</text>
+  <text class="t-desc" x="244" y="268">TGI · Mistral / Gemma</text>
+  <!-- ray job with its two parts -->
+  <rect x="400" y="212" width="128" height="72" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <circle cx="414" cy="229" r="2.5" fill="#15803D" class="tick" style="animation-delay:-1.75s"/>
+  <text class="t-name" x="424" y="232">RAY JOB</text>
+  <rect x="408" y="244" width="52" height="20" rx="6" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <text class="t-small" x="434" y="258" text-anchor="middle">EMBED SVC</text>
+  <rect x="468" y="244" width="52" height="20" rx="6" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <text class="t-small" x="494" y="258" text-anchor="middle">RAY DATA</text>
+  <rect x="552" y="228" width="80" height="56" rx="7" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <text class="t-name" x="564" y="248">BUCKET</text>
+  <text class="t-desc" x="564" y="268">cloud storage</text>
+  <text class="t-small" x="540" y="272" text-anchor="middle">FUSE</text>
 
-  <text class="t-small" x="372" y="164" text-anchor="middle">SEARCH</text>
-  <text class="t-small" x="264" y="236" text-anchor="end">PROMPT</text>
-  <text class="t-small" x="464" y="236">EMBED</text>
+  <!-- data sources, outside the cloud -->
+  <circle cx="556" cy="332" r="4" fill="#4F5D75"/>
+  <text class="t-small" x="556" y="352" text-anchor="middle">INTERNAL</text>
+  <circle cx="628" cy="332" r="4" fill="#4F5D75"/>
+  <text class="t-small" x="628" y="352" text-anchor="middle">EXTERNAL</text>
 
-  <text class="t-prose" x="330" y="384" text-anchor="middle">Two clocks: the serving path answers one prompt; the embedding job keeps the vector store fresh regardless of traffic.</text>
+  <!-- observability sinks -->
+  <rect x="232" y="324" width="112" height="80" rx="7" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <rect x="240" y="332" width="96" height="16" rx="6" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <text class="t-small" x="288" y="343" text-anchor="middle">LOGGING</text>
+  <rect x="240" y="356" width="96" height="16" rx="6" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <text class="t-small" x="288" y="367" text-anchor="middle">MONITORING</text>
+  <rect x="240" y="380" width="96" height="16" rx="6" fill="#FFFFFF" stroke="#BFC0C0"/>
+  <text class="t-small" x="288" y="391" text-anchor="middle">ANALYTICS</text>
+
+  <text class="t-small" x="372" y="144" text-anchor="middle">SEARCH</text>
+  <text class="t-small" x="264" y="216" text-anchor="end">PROMPT</text>
+  <text class="t-small" x="464" y="204">EMBED</text>
+  <text class="t-small" x="296" y="308">TELEMETRY</text>
+
+  <text class="t-prose" x="330" y="436" text-anchor="middle">Two clocks: the serving path answers one prompt; the embedding job keeps the vector store fresh regardless of traffic.</text>
 
   <!-- @motion:elements -->
-  <circle cx="44" cy="180" r="4" fill="#15803D" class="pkt" style="animation-name:q1"/>
-  <rect x="112" y="152" width="80" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q1-glow"/>
-  <circle cx="192" cy="180" r="4" fill="#15803D" class="pkt" style="animation-name:q2"/>
-  <circle cx="232" cy="180" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q2-ring"/>
-  <rect x="232" y="152" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q2-glow"/>
-  <circle cx="344" cy="172" r="4" fill="#15803D" class="pkt" style="animation-name:q3"/>
-  <circle cx="400" cy="172" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q3-ring"/>
-  <rect x="400" y="152" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q3-glow"/>
+  <circle cx="44" cy="152" r="4" fill="#15803D" class="pkt" style="animation-name:q1"/>
+  <rect x="112" y="124" width="80" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q1-glow"/>
+  <circle cx="192" cy="152" r="4" fill="#15803D" class="pkt" style="animation-name:q2"/>
+  <circle cx="232" cy="152" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q2-ring"/>
+  <rect x="232" y="124" width="112" height="72" rx="6" fill="#15803D" class="glow" style="animation-name:q2-glow"/>
+  <circle cx="344" cy="152" r="4" fill="#15803D" class="pkt" style="animation-name:q3"/>
+  <circle cx="400" cy="152" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q3-ring"/>
+  <rect x="400" y="132" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q3-glow"/>
+  <circle cx="248" cy="196" r="4" fill="#15803D" class="pkt" style="animation-name:q3b"/>
+  <circle cx="192" cy="240" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q3b-ring"/>
+  <rect x="112" y="212" width="80" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q3b-glow"/>
   <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#15803D" style="animation-name:ph1;opacity:0">1 · RETRIEVE</text>
   <g class="pkt" style="animation-name:q4">
-    <circle cx="400" cy="188" r="4" fill="#15803D"/>
-    <text class="t-tag" x="400" y="202" text-anchor="middle" fill="#15803D">CHUNKS</text>
+    <circle cx="400" cy="168" r="4" fill="#15803D"/>
+    <text class="t-tag" x="400" y="182" text-anchor="middle" fill="#15803D">CHUNKS</text>
   </g>
-  <circle cx="344" cy="188" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q4-ring"/>
-  <circle cx="272" cy="208" r="4" fill="#15803D" class="pkt" style="animation-name:q5"/>
-  <circle cx="272" cy="256" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q5-ring"/>
-  <rect x="232" y="256" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q5-glow"/>
+  <circle cx="344" cy="168" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q4-ring"/>
+  <circle cx="272" cy="196" r="4" fill="#15803D" class="pkt" style="animation-name:q5"/>
+  <circle cx="272" cy="228" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q5-ring"/>
+  <rect x="232" y="228" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:q5-glow"/>
   <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#B8915A" style="animation-name:ph2;opacity:0">2 · GENERATE</text>
   <g class="pkt" style="animation-name:q6">
-    <circle cx="304" cy="256" r="4" fill="#15803D"/>
-    <text class="t-tag" x="304" y="242" text-anchor="middle" fill="#15803D">ANSWER</text>
+    <circle cx="304" cy="228" r="4" fill="#15803D"/>
+    <text class="t-tag" x="304" y="218" text-anchor="middle" fill="#15803D">ANSWER</text>
   </g>
-  <circle cx="304" cy="208" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q6-ring"/>
-  <circle cx="256" cy="152" r="4" fill="#15803D" class="pkt" style="animation-name:q7"/>
-  <circle cx="40" cy="172" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q7-ring"/>
+  <circle cx="304" cy="196" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q6-ring"/>
+  <circle cx="256" cy="124" r="4" fill="#15803D" class="pkt" style="animation-name:q7"/>
+  <circle cx="40" cy="144" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:q7-ring"/>
   <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#15803D" style="animation-name:ph3;opacity:0">3 · RESPOND</text>
-  <circle cx="536" cy="284" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.6s;animation-delay:-0s"/>
-  <circle cx="536" cy="284" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.6s;animation-delay:-0.8s"/>
-  <circle cx="456" cy="256" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s2;animation-duration:1.6s;animation-delay:-0.8s"/>
-  <circle cx="456" cy="256" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s2;animation-duration:1.6s;animation-delay:-1.6s"/>
+  <circle cx="556" cy="324" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.8s;animation-delay:-0s"/>
+  <circle cx="556" cy="324" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.8s;animation-delay:-0.9s"/>
+  <circle cx="552" cy="256" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s2;animation-duration:1.8s;animation-delay:-0.6s"/>
+  <circle cx="552" cy="256" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s2;animation-duration:1.8s;animation-delay:-1.5s"/>
+  <circle cx="456" cy="212" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s3;animation-duration:1.8s;animation-delay:-1.2s"/>
+  <circle cx="456" cy="212" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s3;animation-duration:1.8s;animation-delay:-2.1s"/>
+  <circle cx="288" cy="284" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s4;animation-duration:1.4s;animation-delay:-0s"/>
+  <circle cx="288" cy="284" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s4;animation-duration:1.4s;animation-delay:-0.7s"/>
   <!-- @/motion:elements -->
 
-  <circle cx="36" cy="416" r="4" fill="#15803D"/>
-  <text class="t-name" x="46" y="420">ONE PROMPT</text>
-  <circle cx="176" cy="416" r="2.5" fill="#2E5AA8"/>
-  <text class="t-name" x="186" y="420">EMBEDDING PIPELINE</text>
+  <circle cx="36" cy="456" r="4" fill="#15803D"/>
+  <text class="t-name" x="46" y="460">ONE PROMPT</text>
+  <circle cx="176" cy="456" r="2.5" fill="#2E5AA8"/>
+  <text class="t-name" x="186" y="460">DATA · TELEMETRY</text>
 </svg>

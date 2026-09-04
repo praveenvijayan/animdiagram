@@ -4,6 +4,12 @@ Looping animated SVG explainer diagrams as an [Agent Skill](https://skills.sh) �
 
 ![example: async job pipeline](assets/example-async-jobs.svg)
 
+<details><summary>Same diagram, light skin (one command)</summary>
+
+![example, light skin](assets/example-async-jobs-light.svg)
+
+</details>
+
 - **One `.svg`, one `<style>`, CSS `@keyframes` only.** No script, no SMIL, no fonts to load, no build. Drops into `<img>`, Markdown, Substack, GitHub READMEs.
 - **Motion grammar**: packets on one shared story clock, arrival rings, destination glows, idle ticks, ambient streams, phase captions, growing bars, movers, state swaps.
 - **Design discipline**: deletion first, one accent colour, ≤ 9 nodes, 4px grid, orthogonal connectors, the static frame must read on its own (reduced-motion safe).
@@ -39,6 +45,7 @@ $EDITOR diagrams/my-story.spec.json                 # list events: from → to, 
 python3 scripts/timeline.py diagrams/my-story.spec.json --inject diagrams/my-story.svg
 python3 scripts/check.py diagrams/my-story.svg
 python3 scripts/preview.py diagrams/my-story.svg --open   # scrub, tune, repeat
+python3 scripts/skin.py diagrams/my-story.svg --to light  # optional light variant
 ```
 
 Python 3.10+, no dependencies.
@@ -57,11 +64,12 @@ scripts/
   timeline.py                spec.json → @keyframes + packet/ring/glow/phase elements, injected between markers
   check.py                   verifier: XML, root attrs, forbidden content, keyframe ↔ reference, budgets, grid
   preview.py                 HTML wrapper with a timeline scrubber, light/dark bg, 2×
+  skin.py                    derive the light (or dark) variant of a finished diagram
   test_timeline.py           smoke tests (python3 scripts/test_timeline.py)
 assets/
   template.svg               dark skeleton with motion markers
   template-light.svg         light skeleton
-  example-async-jobs.svg     worked example (+ .spec.json)
+  example-async-jobs.svg     worked example (+ .spec.json, + -light.svg via skin.py)
 ```
 
 ## Spec at a glance

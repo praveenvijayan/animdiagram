@@ -36,7 +36,7 @@
   </style>
 
   <!-- frame -->
-  <rect x="0.5" y="0.5" width="659" height="359" rx="12" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <rect x="0.5" y="0.5" width="659" height="359" rx="12" fill="#F5F5F5" stroke="#D9DADB"/>
   <text class="t-title" x="28" y="42">TITLE IN CAPS</text>
   <text class="t-sub" x="28" y="66">One sentence: the claim this animation demonstrates</text>
 
@@ -53,5 +53,5 @@
 
   <!-- legend strip -->
   <circle cx="36" cy="336" r="4" fill="#EB6C36"/>
-  <text class="t-name" x="46" y="340">WHAT THE GREEN PACKETS ARE</text>
+  <text class="t-name" x="46" y="340">WHAT THE PACKETS ARE</text>
 </svg>

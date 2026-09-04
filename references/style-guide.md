@@ -23,9 +23,9 @@ Single source of truth for the skin. Reference roles by name; the hex lives here
 
 Rule: `signal` + at most two lanes on moving elements, each lane with a legend entry. Stickers and badges don't count as lanes but keep to one per diagram.
 
-## Light skin (opt-in, `assets/template-light.svg`)
+## Light skin (opt-in)
 
-Maps to the diagram-design default palette so animated and static figures in one post share a family.
+Maps to the diagram-design default palette so animated and static figures in one post share a family. Don't author in light: finish the dark file, then `python3 scripts/skin.py diagram.svg --to light`. The script swaps every token below, the badge rgba pair, and drops glow peak opacity to 0.18. `assets/template-light.svg` and `assets/example-async-jobs-light.svg` are both derived this way.
 
 | Role | Hex |
 |---|---|
@@ -42,7 +42,7 @@ Maps to the diagram-design default palette so animated and static figures in one
 | `lane-rose` | `#9C6B50` |
 | `lane-violet` | `#6E6479` |
 
-Glow opacity on light paper: 0.18 instead of 0.3.
+Extra rows the script also maps: `frame-rule` → `#D9DADB`, `lane-teal` → `#5E7A9B`, `alarm` → `#C0392B`. Glow opacity on light paper: 0.18 instead of 0.3.
 
 ## Type ramp
 

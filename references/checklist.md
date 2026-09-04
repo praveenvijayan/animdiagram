@@ -29,7 +29,8 @@ Run before handing over any `.svg`.
 **Technical**
 - [ ] `python3 scripts/check.py file.svg` → zero errors; each warning justified in the handover note.
 - [ ] One `<style>`, no script/SMIL/defs/external refs; reduced-motion block present.
-- [ ] Opened in `preview.py`: scrubbed to every arrival; rings sit on ports; glows on the right node; light-bg check if the post might be light.
+- [ ] Opened in `preview.py`: scrubbed to every arrival; rings sit on ports; glows on the right node.
+- [ ] If a light variant ships, it was produced by `skin.py` from the final dark file and re-checked, not hand-edited.
 - [ ] Renders in an `<img>` tag (drag the file into a browser tab — not the preview page).
 
 **Handover**

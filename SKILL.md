@@ -1,6 +1,6 @@
 ---
 name: animdiagram
-description: 'Create looping, self-contained animated SVG explainer diagrams (SpacetimeDB "how does it scale" style) — dark frame, monospace labels, packets travelling along orthogonal connectors with arrival rings and glows, phase labels, ambient streams, growing bars — for blog posts, Substack, READMEs and docs. Use when the user asks for an animated / looping / moving diagram, a "packets flowing" explainer, a message-sequence animation, or an SVG that plays in an <img> tag with no JavaScript. Pairs the diagram-design editorial discipline (density budget, one accent, 4px grid, orthogonal connectors) with a CSS-keyframe motion grammar and three scripts: timeline.py (spec → keyframes), check.py (verifier), preview.py (scrubber).'
+description: 'Create looping, self-contained animated SVG explainer diagrams (SpacetimeDB "how does it scale" style) — dark frame, monospace labels, packets travelling along orthogonal connectors with arrival rings and glows, phase labels, ambient streams, growing bars — for blog posts, Substack, READMEs and docs. Use when the user asks for an animated / looping / moving diagram, a "packets flowing" explainer, a message-sequence animation, or an SVG that plays in an <img> tag with no JavaScript. Pairs the diagram-design editorial discipline (density budget, one accent, 4px grid, orthogonal connectors) with a CSS-keyframe motion grammar and scripts: timeline.py (spec → keyframes), check.py (verifier), preview.py (scrubber), skin.py (dark ↔ light).'
 license: MIT
 metadata:
   version: "1.0"
@@ -22,7 +22,7 @@ References load on demand:
 | Brief + event list → `spec.json` format for `timeline.py` | [references/storyboard.md](references/storyboard.md) |
 | Pre-ship taste gate | [references/checklist.md](references/checklist.md) |
 
-Assets: `assets/template.svg` (dark), `assets/template-light.svg`, worked example `assets/example-async-jobs.svg` + `.spec.json`.
+Assets: `assets/template.svg` (dark), `assets/template-light.svg`, worked example `assets/example-async-jobs.svg` + `.spec.json` + `-light.svg` (derived with `scripts/skin.py`).
 
 ---
 
@@ -59,7 +59,8 @@ Don't use for: a static architecture map (use diagram-design), a list of compone
 5. **Compile**: `python3 scripts/timeline.py <slug>.spec.json --inject <slug>.svg`. The schedule table prints; sanity-check start/end times.
 6. **Verify**: `python3 scripts/check.py <slug>.svg` — fix every ERROR, justify every warn.
 7. **Tune by eye**: `python3 scripts/preview.py <slug>.svg --open`; scrub to each arrival, check rings land on box edges, labels don't collide, the rest gap reads as "idle", light-bg toggle if the post may be light. Adjust the spec, re-inject (idempotent), re-check.
-8. **Ship** the `.svg` (optionally the `.spec.json` beside it for edits). Report the schedule table and any budget cuts.
+8. **Light variant** (only if the post is light): `python3 scripts/skin.py <slug>.svg --to light` writes `<slug>-light.svg`. Author in dark, derive light; never hand-edit two copies.
+9. **Ship** the `.svg` (optionally the `.spec.json` beside it for edits). Report the schedule table and any budget cuts.
 
 Output path: `diagrams/<kebab-slug>.svg` in the current project, or the scratchpad when there is no project.
 

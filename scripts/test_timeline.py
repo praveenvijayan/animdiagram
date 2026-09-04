@@ -16,6 +16,7 @@ sys.path.insert(0, str(HERE))
 
 import timeline  # noqa: E402
 import check  # noqa: E402
+import skin  # noqa: E402
 
 
 def run(*args):
@@ -96,6 +97,17 @@ def test_templates_pass_check():
     for name in ("template.svg", "template-light.svg"):
         errors, warns = check.check(ROOT / "assets" / name)
         assert not errors and not warns, (name, errors, warns)
+
+
+def test_skin_round_trip():
+    dark = (ROOT / "assets" / "example-async-jobs.svg").read_text()
+    light = skin.convert(dark, "light")
+    assert "#4CF490" not in light.upper() and "#EB6C36" in light.upper()
+    assert "opacity: 0.18;" in light and "opacity: 0.3;" not in light
+    back = skin.convert(light, "dark")
+    assert back == dark, "light -> dark does not restore the original"
+    shipped = (ROOT / "assets" / "example-async-jobs-light.svg").read_text()
+    assert shipped == light, "shipped light example is stale; rerun skin.py"
 
 
 if __name__ == "__main__":

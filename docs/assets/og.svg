@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <style>
+    text { font-family: 'Source Code Pro', ui-monospace, Menlo, Consolas, monospace; }
+    .sans { font-family: Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  </style>
+  <rect width="1200" height="630" fill="#0D0D0E"/>
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#202126"/>
+
+  <!-- brand -->
+  <circle cx="72" cy="88" r="6" fill="#4CF490"/>
+  <text x="92" y="97" font-size="30" font-weight="700" letter-spacing="4" fill="#F4F6FC">animdiagram</text>
+  <text x="352" y="97" font-size="16" letter-spacing="3" fill="#6F7987">GALLERY</text>
+
+  <text x="72" y="196" font-size="64" font-weight="700" letter-spacing="5" fill="#F4F6FC">DIAGRAMS THAT</text>
+  <text x="72" y="270" font-size="64" font-weight="700" letter-spacing="5" fill="#F4F6FC">EXPLAIN IN TIME</text>
+  <text class="sans" x="72" y="330" font-size="26" fill="#B6C0CF">Looping animated SVG explainers. One file, one &lt;style&gt;, no script.</text>
+  <text class="sans" x="72" y="368" font-size="26" fill="#6F7987">Architecture · sequence · flowchart · packets on connectors.</text>
+
+  <!-- mini frame: three nodes, packets, ring, glow -->
+  <g transform="translate(72,420)">
+    <rect x="0" y="0" width="1056" height="140" rx="16" fill="#141416" stroke="#363840"/>
+    <g stroke="#363840" stroke-width="2">
+      <line x1="60" y1="70" x2="180" y2="70"/>
+      <line x1="380" y1="70" x2="500" y2="70"/>
+      <line x1="700" y1="62" x2="820" y2="62"/>
+      <line x1="820" y1="78" x2="700" y2="78"/>
+    </g>
+    <g fill="#363840">
+      <polygon points="168,64 180,70 168,76"/>
+      <polygon points="488,64 500,70 488,76"/>
+      <polygon points="808,56 820,62 808,68"/>
+      <polygon points="712,72 700,78 712,84"/>
+    </g>
+    <circle cx="50" cy="70" r="8" fill="#6F7987"/>
+    <rect x="180" y="34" width="200" height="72" rx="12" fill="#0D0D0E" stroke="#363840" stroke-width="2"/>
+    <circle cx="204" cy="58" r="5" fill="#4CF490"/>
+    <text x="220" y="64" font-size="18" letter-spacing="2" fill="#B6C0CF">API</text>
+    <text class="sans" x="200" y="90" font-size="16" fill="#6F7987">validate · 202</text>
+    <rect x="500" y="34" width="200" height="72" rx="12" fill="#0D0D0E" stroke="#363840" stroke-width="2"/>
+    <rect x="500" y="34" width="200" height="72" rx="12" fill="#4CF490" opacity="0.18"/>
+    <circle cx="524" cy="58" r="5" fill="#4CF490"/>
+    <text x="540" y="64" font-size="18" letter-spacing="2" fill="#B6C0CF">QUEUE</text>
+    <text class="sans" x="520" y="90" font-size="16" fill="#6F7987">durable · fifo</text>
+    <rect x="820" y="34" width="200" height="72" rx="12" fill="#0D0D0E" stroke="#363840" stroke-width="2"/>
+    <circle cx="844" cy="58" r="5" fill="#4CF490"/>
+    <text x="860" y="64" font-size="18" letter-spacing="2" fill="#B6C0CF">WORKER</text>
+    <text class="sans" x="840" y="90" font-size="16" fill="#6F7987">pull · retry</text>
+    <circle cx="130" cy="70" r="8" fill="#4CF490"/>
+    <circle cx="500" cy="70" r="18" fill="none" stroke="#4CF490" stroke-width="3" opacity="0.7"/>
+    <circle cx="470" cy="70" r="8" fill="#4CF490"/>
+    <circle cx="740" cy="62" r="6" fill="#02BEFA"/>
+    <circle cx="780" cy="62" r="6" fill="#02BEFA"/>
+  </g>
+  <text x="1128" y="97" font-size="16" letter-spacing="3" fill="#6F7987" text-anchor="end">praveenvijayan.github.io/animdiagram</text>
+</svg>

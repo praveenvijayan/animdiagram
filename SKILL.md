@@ -1,6 +1,6 @@
 ---
 name: animdiagram
-description: Create looping, self-contained animated SVG explainer diagrams (SpacetimeDB "how does it scale" style) — dark frame, monospace labels, packets travelling along orthogonal connectors with arrival rings and glows, phase labels, ambient streams, growing bars — for blog posts, Substack, READMEs and docs. Use when the user asks for an animated / looping / moving diagram, a "packets flowing" explainer, a message-sequence animation, or an SVG that plays in an <img> tag with no JavaScript. Pairs the diagram-design editorial discipline (density budget, one accent, 4px grid, orthogonal connectors) with a CSS-keyframe motion grammar and three scripts: timeline.py (spec → keyframes), check.py (verifier), preview.py (scrubber).
+description: 'Create looping, self-contained animated SVG explainer diagrams (SpacetimeDB "how does it scale" style) — dark frame, monospace labels, packets travelling along orthogonal connectors with arrival rings and glows, phase labels, ambient streams, growing bars — for blog posts, Substack, READMEs and docs. Use when the user asks for an animated / looping / moving diagram, a "packets flowing" explainer, a message-sequence animation, or an SVG that plays in an <img> tag with no JavaScript. Pairs the diagram-design editorial discipline (density budget, one accent, 4px grid, orthogonal connectors) with a CSS-keyframe motion grammar and three scripts: timeline.py (spec → keyframes), check.py (verifier), preview.py (scrubber).'
 license: MIT
 metadata:
   version: "1.0"

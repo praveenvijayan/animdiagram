@@ -1,0 +1,222 @@
+{
+ "loop": 8,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "w1",
+   "kind": "packet",
+   "note": "browser calls the api with a jwt",
+   "at": 0.2,
+   "travel": 0.4,
+   "from": [
+    44,
+    148
+   ],
+   "to": [
+    96,
+    148
+   ],
+   "ring": false,
+   "label": "JWT",
+   "glow": {
+    "x": 96,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "w2",
+   "kind": "packet",
+   "note": "gateway invokes the function",
+   "after": "w1",
+   "travel": 0.3,
+   "from": [
+    208,
+    140
+   ],
+   "to": [
+    248,
+    140
+   ],
+   "glow": {
+    "x": 248,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 1.2,
+   "text": "1 · INVOKE",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2: the function is being provisioned",
+   "at": 1.3,
+   "until": 2.5,
+   "text": "2 · COLD START",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "w3",
+   "kind": "packet",
+   "note": "function writes the item after the cold start",
+   "after": "w2",
+   "gap": 1.4,
+   "travel": 0.4,
+   "from": [
+    360,
+    140
+   ],
+   "to": [
+    400,
+    140
+   ],
+   "glow": {
+    "x": 400,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "w4",
+   "kind": "packet",
+   "note": "dynamodb acknowledges",
+   "after": "w3",
+   "travel": 0.4,
+   "from": [
+    400,
+    156
+   ],
+   "to": [
+    360,
+    156
+   ]
+  },
+  {
+   "id": "w5",
+   "kind": "packet",
+   "note": "function returns to the gateway",
+   "after": "w4",
+   "gap": 0.2,
+   "travel": 0.3,
+   "from": [
+    248,
+    156
+   ],
+   "to": [
+    208,
+    156
+   ]
+  },
+  {
+   "id": "w6",
+   "kind": "packet",
+   "note": "201 back to the browser",
+   "after": "w5",
+   "travel": 1.0,
+   "from": [
+    152,
+    120
+   ],
+   "via": [
+    [
+     152,
+     96
+    ],
+    [
+     40,
+     96
+    ]
+   ],
+   "to": [
+    40,
+    140
+   ],
+   "label": "201"
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 2.6,
+   "until": 5.4,
+   "text": "3 · RUN · RETURN",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "b1",
+   "kind": "bar",
+   "note": "billed duration grows only while the function runs",
+   "at": 0,
+   "steps": [
+    [
+     0,
+     0
+    ],
+    [
+     1.2,
+     0.15
+    ],
+    [
+     2.6,
+     0.45
+    ],
+    [
+     3.0,
+     0.7
+    ],
+    [
+     3.4,
+     0.9
+    ],
+    [
+     3.9,
+     1.0
+    ]
+   ],
+   "x": 248,
+   "y": 188,
+   "w": 112,
+   "h": 4,
+   "color": "#4CF490"
+  },
+  {
+   "id": "s1",
+   "kind": "stream",
+   "note": "static assets keep coming from the cdn",
+   "from": [
+    40,
+    156
+   ],
+   "via": [
+    [
+     40,
+     252
+    ]
+   ],
+   "to": [
+    96,
+    252
+   ],
+   "period": 1.6,
+   "count": 3,
+   "color": "#02BEFA",
+   "r": 2.5
+  }
+ ]
+}

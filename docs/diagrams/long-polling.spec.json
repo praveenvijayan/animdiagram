@@ -1,0 +1,138 @@
+{
+ "loop": 10,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "p1",
+   "kind": "packet",
+   "note": "client asks once",
+   "at": 0.2,
+   "travel": 0.6,
+   "from": [
+    376,
+    188
+   ],
+   "to": [
+    428,
+    188
+   ],
+   "glow": {
+    "x": 428,
+    "y": 168,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "held",
+   "kind": "show",
+   "note": "request parked until there is something to say",
+   "at": 0.9,
+   "until": 3.9
+  },
+  {
+   "id": "p2",
+   "kind": "packet",
+   "note": "another user sends a message",
+   "at": 3.6,
+   "travel": 0.5,
+   "from": [
+    596,
+    196
+   ],
+   "to": [
+    540,
+    196
+   ],
+   "label": "MSG",
+   "glow": {
+    "x": 428,
+    "y": 168,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "p3",
+   "kind": "packet",
+   "note": "the held request is answered with it",
+   "after": "p2",
+   "gap": 0.2,
+   "travel": 0.6,
+   "from": [
+    428,
+    204
+   ],
+   "to": [
+    376,
+    204
+   ],
+   "label": "NEW",
+   "label_dy": 14
+  },
+  {
+   "id": "p4",
+   "kind": "packet",
+   "note": "client asks again immediately",
+   "after": "p3",
+   "gap": 0.2,
+   "travel": 0.6,
+   "from": [
+    376,
+    188
+   ],
+   "to": [
+    428,
+    188
+   ],
+   "glow": {
+    "x": 428,
+    "y": 168,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "held2",
+   "kind": "show",
+   "note": "parked again, nothing else happens",
+   "at": 5.8,
+   "until": 9.6
+  },
+  {
+   "id": "s1",
+   "kind": "stream",
+   "note": "short polling: a request every second",
+   "from": [
+    68,
+    188
+   ],
+   "to": [
+    120,
+    188
+   ],
+   "period": 1.0,
+   "count": 1,
+   "color": "#02BEFA",
+   "r": 2.5
+  },
+  {
+   "id": "s2",
+   "kind": "stream",
+   "note": "…and an empty reply every second",
+   "from": [
+    120,
+    204
+   ],
+   "to": [
+    68,
+    204
+   ],
+   "period": 1.0,
+   "count": 1,
+   "color": "#02BEFA",
+   "r": 2.5,
+   "phase": 0.5
+  }
+ ]
+}

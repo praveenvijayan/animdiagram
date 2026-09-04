@@ -1,0 +1,335 @@
+{
+ "loop": 10,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "k0",
+   "kind": "packet",
+   "note": "k0 walks the space to s1",
+   "at": 0.2,
+   "travel": 0.6,
+   "from": [
+    148,
+    232
+   ],
+   "via": [
+    [
+     148,
+     200
+    ],
+    [
+     240,
+     200
+    ]
+   ],
+   "to": [
+    240,
+    176
+   ],
+   "glow": {
+    "x": 212,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "k1",
+   "kind": "packet",
+   "note": "k1 to s2",
+   "after": "k0",
+   "gap": 0.1,
+   "travel": 0.5,
+   "from": [
+    300,
+    232
+   ],
+   "via": [
+    [
+     300,
+     200
+    ],
+    [
+     380,
+     200
+    ]
+   ],
+   "to": [
+    380,
+    176
+   ],
+   "glow": {
+    "x": 352,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "k2",
+   "kind": "packet",
+   "note": "k2 to s3",
+   "after": "k1",
+   "gap": 0.1,
+   "travel": 0.5,
+   "from": [
+    440,
+    232
+   ],
+   "via": [
+    [
+     440,
+     200
+    ],
+    [
+     520,
+     200
+    ]
+   ],
+   "to": [
+    520,
+    176
+   ],
+   "glow": {
+    "x": 492,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "k3",
+   "kind": "packet",
+   "note": "k3 wraps around to s0",
+   "after": "k2",
+   "gap": 0.1,
+   "travel": 1.2,
+   "from": [
+    560,
+    232
+   ],
+   "via": [
+    [
+     560,
+     200
+    ],
+    [
+     600,
+     200
+    ],
+    [
+     600,
+     136
+    ],
+    [
+     100,
+     136
+    ]
+   ],
+   "to": [
+    100,
+    152
+   ],
+   "glow": {
+    "x": 72,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 4.0,
+   "text": "1 · FOUR SERVERS",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "join",
+   "kind": "show",
+   "note": "s4 joins between s0 and s1 and stays",
+   "at": 4.4,
+   "until": 9.6
+  },
+  {
+   "id": "jp",
+   "kind": "pulse",
+   "note": "join ring on s4",
+   "at": 4.4,
+   "x": 172,
+   "y": 164,
+   "color": "#FBDC8E",
+   "ring_r": 14,
+   "dur": 0.6
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2",
+   "at": 4.2,
+   "until": 5.0,
+   "text": "2 · S4 JOINS",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "k0b",
+   "kind": "packet",
+   "note": "only k0 changes owner: s4 is now next",
+   "at": 5.3,
+   "travel": 0.4,
+   "from": [
+    148,
+    232
+   ],
+   "via": [
+    [
+     148,
+     200
+    ],
+    [
+     172,
+     200
+    ]
+   ],
+   "to": [
+    172,
+    176
+   ],
+   "glow": {
+    "x": 144,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "k1b",
+   "kind": "packet",
+   "note": "k1 unchanged",
+   "after": "k0b",
+   "gap": 0.2,
+   "travel": 0.4,
+   "from": [
+    300,
+    232
+   ],
+   "via": [
+    [
+     300,
+     200
+    ],
+    [
+     380,
+     200
+    ]
+   ],
+   "to": [
+    380,
+    176
+   ],
+   "glow": {
+    "x": 352,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "k2b",
+   "kind": "packet",
+   "note": "k2 unchanged",
+   "after": "k1b",
+   "gap": 0.1,
+   "travel": 0.4,
+   "from": [
+    440,
+    232
+   ],
+   "via": [
+    [
+     440,
+     200
+    ],
+    [
+     520,
+     200
+    ]
+   ],
+   "to": [
+    520,
+    176
+   ],
+   "glow": {
+    "x": 492,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "k3b",
+   "kind": "packet",
+   "note": "k3 unchanged",
+   "after": "k2b",
+   "gap": 0.1,
+   "travel": 1.0,
+   "from": [
+    560,
+    232
+   ],
+   "via": [
+    [
+     560,
+     200
+    ],
+    [
+     600,
+     200
+    ],
+    [
+     600,
+     136
+    ],
+    [
+     100,
+     136
+    ]
+   ],
+   "to": [
+    100,
+    152
+   ],
+   "glow": {
+    "x": 72,
+    "y": 152,
+    "w": 56,
+    "h": 24,
+    "rx": 6
+   }
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 5.1,
+   "until": 8.8,
+   "text": "3 · ONLY K0 MOVES",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  }
+ ]
+}

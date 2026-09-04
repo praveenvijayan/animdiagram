@@ -115,7 +115,7 @@
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 03</span></a>
+    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 07</span></a>
     <div class="tools">
       <button type="button" data-skin="dark" aria-pressed="true">Dark</button>
       <button type="button" data-skin="light" aria-pressed="false">Light</button>
@@ -139,6 +139,10 @@
 <a class="chip" href="#news-feed-fanout"><span class="n">01</span>News feed fan-out</a>
 <a class="chip" href="#rate-limiter"><span class="n">02</span>Rate limiter</a>
 <a class="chip" href="#ai-agents-azure"><span class="n">03</span>AI agents at scale</a>
+<a class="chip" href="#aws-serverless"><span class="n">04</span>Serverless web app</a>
+<a class="chip" href="#gcp-streaming"><span class="n">05</span>Streaming on GCP</a>
+<a class="chip" href="#consistent-hashing"><span class="n">06</span>Consistent hashing</a>
+<a class="chip" href="#long-polling"><span class="n">07</span>Long polling</a>
 </nav>
 
 <div class="entries">
@@ -237,6 +241,138 @@
         <ul class="prims"><li>zone boundary</li><li>packets with waypoints</li><li>labelled reply</li><li>two ambient streams</li><li>boundary crossing</li><li>phase captions</li><li>passive sinks</li></ul>
         <h3>Cut from the source</h3>
         <p class="cuts">load balancer, container registry, key vault, storage, Redis, Entra ID, Monitor / App Insights, private DNS, DDoS plan.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="aws-serverless" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">04</span>Cloud architecture<span class="sep">·</span><span class="src">AWS reference architecture · serverless web application</span></div>
+    <h2>Serverless web app</h2>
+    <p class="claim">No server waits for the request; each hop exists, and is billed, only while it runs.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/aws-serverless.svg" data-dark="diagrams/aws-serverless.svg" data-light="diagrams/aws-serverless-light.svg" alt="Serverless web app animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/aws-serverless.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/aws-serverless.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 8 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>w1</td><td>packet</td><td class=num>0.2</td><td class=num>0.6</td><td>JWT</td></tr><tr><td>w2</td><td>packet</td><td class=num>0.9</td><td class=num>1.2</td><td>gateway invokes the function</td></tr><tr><td>ph1</td><td>phase</td><td class=num>0</td><td class=num>1.2</td><td>1 · INVOKE</td></tr><tr><td>ph2</td><td>phase</td><td class=num>1.3</td><td class=num>2.5</td><td>2 · COLD START</td></tr><tr><td>w3</td><td>packet</td><td class=num>2.6</td><td class=num>3</td><td>function writes the item after the cold start</td></tr><tr><td>w4</td><td>packet</td><td class=num>3.3</td><td class=num>3.7</td><td>dynamodb acknowledges</td></tr><tr><td>w5</td><td>packet</td><td class=num>3.9</td><td class=num>4.2</td><td>function returns to the gateway</td></tr><tr><td>w6</td><td>packet</td><td class=num>4.5</td><td class=num>5.5</td><td>201</td></tr><tr><td>ph3</td><td>phase</td><td class=num>2.6</td><td class=num>5.4</td><td>3 · RUN · RETURN</td></tr><tr><td>b1</td><td>bar</td><td class=num>0</td><td class=num>3.9</td><td>billed duration grows only while the function runs</td></tr><tr><td>s1</td><td>stream</td><td class=num></td><td class=num></td><td>static assets keep coming from the cdn</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>packets</li><li>labelled packets</li><li>cold-start phase</li><li>growing bar</li><li>return corridor</li><li>ambient stream</li><li>passive sink</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">Cognito user pool (folded into the gateway&#x27;s authorizer sublabel), Amplify hosting, CloudWatch, DynamoDB streams.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="gcp-streaming" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">05</span>Cloud architecture<span class="sep">·</span><span class="src">Google Cloud Architecture Center · streaming analytics</span></div>
+    <h2>Streaming on GCP</h2>
+    <p class="claim">The producer is acknowledged immediately; the warehouse write happens later, off the device&#x27;s clock.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/gcp-streaming.svg" data-dark="diagrams/gcp-streaming.svg" data-light="diagrams/gcp-streaming-light.svg" alt="Streaming on GCP animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/gcp-streaming.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/gcp-streaming.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 8 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>e1</td><td>packet</td><td class=num>0.2</td><td class=num>0.6</td><td>device publishes an event</td></tr><tr><td>e2</td><td>packet</td><td class=num>0.8</td><td class=num>1.2</td><td>pub/sub acks the device at once</td></tr><tr><td>ph1</td><td>phase</td><td class=num>0</td><td class=num>1.4</td><td>1 · PUBLISH</td></tr><tr><td>e3</td><td>packet</td><td class=num>1.5</td><td class=num>1.9</td><td>dataflow pulls the event</td></tr><tr><td>ph2</td><td>phase</td><td class=num>1.5</td><td class=num>2.9</td><td>2 · WINDOW</td></tr><tr><td>e4</td><td>packet</td><td class=num>2.9</td><td class=num>3.3</td><td>streaming insert into bigquery</td></tr><tr><td>e5</td><td>packet</td><td class=num>2.9</td><td class=num>3.8</td><td>raw copy archived at the same time</td></tr><tr><td>e6</td><td>packet</td><td class=num>4.1</td><td class=num>4.5</td><td>ACK</td></tr><tr><td>ph3</td><td>phase</td><td class=num>3</td><td class=num>5.2</td><td>3 · COMMIT</td></tr><tr><td>s1</td><td>stream</td><td class=num></td><td class=num></td><td>other devices keep publishing</td></tr><tr><td>s2</td><td>stream</td><td class=num></td><td class=num></td><td>other devices keep publishing</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>packets</li><li>immediate ack on the same stroke</li><li>simultaneous writes</li><li>labelled ack</li><li>two ambient streams</li><li>phase captions</li><li>passive sink</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">Looker / BI layer, Bigtable serving path, Dataflow autoscaling, dead-letter topic, IoT Core ingestion.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="consistent-hashing" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">06</span>System design<span class="sep">·</span><span class="src">System Design Interview · consistent hashing, adding a server</span></div>
+    <h2>Consistent hashing</h2>
+    <p class="claim">Adding a server moves only the keys between it and its predecessor; every other key stays put.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/consistent-hashing.svg" data-dark="diagrams/consistent-hashing.svg" data-light="diagrams/consistent-hashing-light.svg" alt="Consistent hashing animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/consistent-hashing.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/consistent-hashing.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 10 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>k0</td><td>packet</td><td class=num>0.2</td><td class=num>0.8</td><td>k0 walks the space to s1</td></tr><tr><td>k1</td><td>packet</td><td class=num>0.9</td><td class=num>1.4</td><td>k1 to s2</td></tr><tr><td>k2</td><td>packet</td><td class=num>1.5</td><td class=num>2</td><td>k2 to s3</td></tr><tr><td>k3</td><td>packet</td><td class=num>2.1</td><td class=num>3.3</td><td>k3 wraps around to s0</td></tr><tr><td>ph1</td><td>phase</td><td class=num>0</td><td class=num>4</td><td>1 · FOUR SERVERS</td></tr><tr><td>join</td><td>show</td><td class=num>4.4</td><td class=num>9.6</td><td>s4 joins between s0 and s1 and stays</td></tr><tr><td>jp</td><td>pulse</td><td class=num>4.4</td><td class=num>5</td><td>join ring on s4</td></tr><tr><td>ph2</td><td>phase</td><td class=num>4.2</td><td class=num>5</td><td>2 · S4 JOINS</td></tr><tr><td>k0b</td><td>packet</td><td class=num>5.3</td><td class=num>5.7</td><td>only k0 changes owner: s4 is now next</td></tr><tr><td>k1b</td><td>packet</td><td class=num>5.9</td><td class=num>6.3</td><td>k1 unchanged</td></tr><tr><td>k2b</td><td>packet</td><td class=num>6.4</td><td class=num>6.8</td><td>k2 unchanged</td></tr><tr><td>k3b</td><td>packet</td><td class=num>6.9</td><td class=num>7.9</td><td>k3 unchanged</td></tr><tr><td>ph3</td><td>phase</td><td class=num>5.1</td><td class=num>8.8</td><td>3 · ONLY K0 MOVES</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>packets with waypoints</li><li>wrap-around corridor</li><li>tile glow</li><li>show window (server joins)</li><li>pulse</li><li>phase captions</li><li>before / after in one loop</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">virtual nodes, server removal, replication to the next N servers, the ring drawn as a circle (orthogonal space instead).</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="long-polling" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">07</span>System design<span class="sep">·</span><span class="src">System Design Interview · chat system, long polling</span></div>
+    <h2>Long polling</h2>
+    <p class="claim">Ask once and let the server hold the request until something happens; idle round trips disappear.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/long-polling.svg" data-dark="diagrams/long-polling.svg" data-light="diagrams/long-polling-light.svg" alt="Long polling animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/long-polling.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/long-polling.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 10 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>p1</td><td>packet</td><td class=num>0.2</td><td class=num>0.8</td><td>client asks once</td></tr><tr><td>held</td><td>show</td><td class=num>0.9</td><td class=num>3.9</td><td>request parked until there is something to say</td></tr><tr><td>p2</td><td>packet</td><td class=num>3.6</td><td class=num>4.1</td><td>MSG</td></tr><tr><td>p3</td><td>packet</td><td class=num>4.3</td><td class=num>4.9</td><td>NEW</td></tr><tr><td>p4</td><td>packet</td><td class=num>5.1</td><td class=num>5.7</td><td>client asks again immediately</td></tr><tr><td>held2</td><td>show</td><td class=num>5.8</td><td class=num>9.6</td><td>parked again, nothing else happens</td></tr><tr><td>s1</td><td>stream</td><td class=num></td><td class=num></td><td>short polling: a request every second</td></tr><tr><td>s2</td><td>stream</td><td class=num></td><td class=num></td><td>…and an empty reply every second</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>comparison panels</li><li>ambient stream vs story</li><li>held-state show window</li><li>waiting slot</li><li>labelled packets</li><li>re-poll chain</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">WebSocket alternative, timeout-and-retry on the held request, message persistence, presence.</p>
       </div>
     </aside>
   </div>

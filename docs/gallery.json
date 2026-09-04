@@ -12,7 +12,15 @@
       "category": "System design",
       "source": "System Design Interview · news feed, fan-out on write",
       "claim": "One post becomes N feed entries at write time, so every friend's read is a cache hit.",
-      "primitives": ["packets", "arrival rings", "destination glow", "tile glow", "simultaneous fan-out", "phase captions", "ambient stream"],
+      "primitives": [
+        "packets",
+        "arrival rings",
+        "destination glow",
+        "tile glow",
+        "simultaneous fan-out",
+        "phase captions",
+        "ambient stream"
+      ],
       "cuts": "web tier, load balancer, DNS, notification service, user cache and user DB — the read path is a second diagram."
     },
     {
@@ -21,7 +29,14 @@
       "category": "System design",
       "source": "System Design Interview · rate limiter middleware",
       "claim": "Over the limit, the middleware answers 429 itself; the API servers only ever see the allowed share.",
-      "primitives": ["packets", "labelled packets", "growing bar", "colour lanes", "return corridor", "phase captions"],
+      "primitives": [
+        "packets",
+        "labelled packets",
+        "growing bar",
+        "colour lanes",
+        "return corridor",
+        "phase captions"
+      ],
       "cuts": "rules store and rule-refresh workers, drop-vs-queue option for refused requests."
     },
     {
@@ -30,8 +45,83 @@
       "category": "Cloud architecture",
       "source": "Azure Architecture Center · AI agents at scale (AKS + Foundry)",
       "claim": "The prompt crosses the gateway once; everything after it stays on private endpoints inside the VNet.",
-      "primitives": ["zone boundary", "packets with waypoints", "labelled reply", "two ambient streams", "boundary crossing", "phase captions", "passive sinks"],
+      "primitives": [
+        "zone boundary",
+        "packets with waypoints",
+        "labelled reply",
+        "two ambient streams",
+        "boundary crossing",
+        "phase captions",
+        "passive sinks"
+      ],
       "cuts": "load balancer, container registry, key vault, storage, Redis, Entra ID, Monitor / App Insights, private DNS, DDoS plan."
+    },
+    {
+      "slug": "aws-serverless",
+      "title": "Serverless web app",
+      "category": "Cloud architecture",
+      "source": "AWS reference architecture · serverless web application",
+      "claim": "No server waits for the request; each hop exists, and is billed, only while it runs.",
+      "primitives": [
+        "packets",
+        "labelled packets",
+        "cold-start phase",
+        "growing bar",
+        "return corridor",
+        "ambient stream",
+        "passive sink"
+      ],
+      "cuts": "Cognito user pool (folded into the gateway's authorizer sublabel), Amplify hosting, CloudWatch, DynamoDB streams."
+    },
+    {
+      "slug": "gcp-streaming",
+      "title": "Streaming on GCP",
+      "category": "Cloud architecture",
+      "source": "Google Cloud Architecture Center · streaming analytics",
+      "claim": "The producer is acknowledged immediately; the warehouse write happens later, off the device's clock.",
+      "primitives": [
+        "packets",
+        "immediate ack on the same stroke",
+        "simultaneous writes",
+        "labelled ack",
+        "two ambient streams",
+        "phase captions",
+        "passive sink"
+      ],
+      "cuts": "Looker / BI layer, Bigtable serving path, Dataflow autoscaling, dead-letter topic, IoT Core ingestion."
+    },
+    {
+      "slug": "consistent-hashing",
+      "title": "Consistent hashing",
+      "category": "System design",
+      "source": "System Design Interview · consistent hashing, adding a server",
+      "claim": "Adding a server moves only the keys between it and its predecessor; every other key stays put.",
+      "primitives": [
+        "packets with waypoints",
+        "wrap-around corridor",
+        "tile glow",
+        "show window (server joins)",
+        "pulse",
+        "phase captions",
+        "before / after in one loop"
+      ],
+      "cuts": "virtual nodes, server removal, replication to the next N servers, the ring drawn as a circle (orthogonal space instead)."
+    },
+    {
+      "slug": "long-polling",
+      "title": "Long polling",
+      "category": "System design",
+      "source": "System Design Interview · chat system, long polling",
+      "claim": "Ask once and let the server hold the request until something happens; idle round trips disappear.",
+      "primitives": [
+        "comparison panels",
+        "ambient stream vs story",
+        "held-state show window",
+        "waiting slot",
+        "labelled packets",
+        "re-poll chain"
+      ],
+      "cuts": "WebSocket alternative, timeout-and-retry on the held request, message persistence, presence."
     }
   ]
 }

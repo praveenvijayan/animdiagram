@@ -1,0 +1,198 @@
+{
+ "loop": 8,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "e1",
+   "kind": "packet",
+   "note": "device publishes an event",
+   "at": 0.2,
+   "travel": 0.4,
+   "from": [
+    44,
+    148
+   ],
+   "to": [
+    96,
+    148
+   ],
+   "glow": {
+    "x": 96,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "e2",
+   "kind": "packet",
+   "note": "pub/sub acks the device at once",
+   "after": "e1",
+   "gap": 0.2,
+   "travel": 0.4,
+   "from": [
+    96,
+    148
+   ],
+   "to": [
+    44,
+    148
+   ]
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 1.4,
+   "text": "1 · PUBLISH",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "e3",
+   "kind": "packet",
+   "note": "dataflow pulls the event",
+   "after": "e2",
+   "travel": 0.4,
+   "from": [
+    208,
+    140
+   ],
+   "to": [
+    248,
+    140
+   ],
+   "glow": {
+    "x": 248,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2: windowing",
+   "at": 1.5,
+   "until": 2.9,
+   "text": "2 · WINDOW",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "e4",
+   "kind": "packet",
+   "note": "streaming insert into bigquery",
+   "after": "e3",
+   "gap": 1.0,
+   "travel": 0.4,
+   "from": [
+    360,
+    140
+   ],
+   "to": [
+    400,
+    140
+   ],
+   "glow": {
+    "x": 400,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "e5",
+   "kind": "packet",
+   "note": "raw copy archived at the same time",
+   "with": "e4",
+   "travel": 0.9,
+   "from": [
+    304,
+    176
+   ],
+   "via": [
+    [
+     304,
+     252
+    ]
+   ],
+   "to": [
+    400,
+    252
+   ],
+   "glow": {
+    "x": 400,
+    "y": 224,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "e6",
+   "kind": "packet",
+   "note": "subscription acked only after both writes",
+   "after": "e5",
+   "travel": 0.4,
+   "from": [
+    248,
+    156
+   ],
+   "to": [
+    208,
+    156
+   ],
+   "label": "ACK",
+   "label_dy": 14
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 3.0,
+   "until": 5.2,
+   "text": "3 · COMMIT",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "s1",
+   "kind": "stream",
+   "note": "other devices keep publishing",
+   "from": [
+    44,
+    132
+   ],
+   "to": [
+    96,
+    132
+   ],
+   "period": 1.6,
+   "count": 2,
+   "color": "#02BEFA",
+   "r": 2.5
+  },
+  {
+   "id": "s2",
+   "kind": "stream",
+   "note": "other devices keep publishing",
+   "from": [
+    44,
+    164
+   ],
+   "to": [
+    96,
+    164
+   ],
+   "period": 1.6,
+   "count": 2,
+   "color": "#02BEFA",
+   "r": 2.5,
+   "phase": 0.8
+  }
+ ]
+}

@@ -34,7 +34,7 @@ Maps to the diagram-design default palette so animated and static figures in one
 | `frame-rule` | `rgba(45,49,66,0.12)` |
 | `rule` | `#BFC0C0` |
 | `ink` | `#2D3142` |
-| `label` | `#2D3142` |
+| `label` | `#3B4054` |
 | `muted` | `#4F5D75` |
 | `signal` | `#EB6C36` (atomic tangerine) |
 | `lane-cyan` | `#2E5AA8` |

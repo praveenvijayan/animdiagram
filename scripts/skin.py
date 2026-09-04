@@ -24,7 +24,7 @@ DARK_TO_LIGHT = {
     "#202126": "#D9DADB",   # frame-rule / trunk links
     "#363840": "#BFC0C0",   # rule
     "#F4F6FC": "#2D3142",   # ink
-    "#B6C0CF": "#2D3142",   # label
+    "#B6C0CF": "#3B4054",   # label (distinct from ink so the swap is reversible)
     "#6F7987": "#4F5D75",   # muted
     "#4CF490": "#EB6C36",   # signal
     "#02BEFA": "#2E5AA8",   # lane-cyan

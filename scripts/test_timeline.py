@@ -103,7 +103,8 @@ def test_skin_round_trip():
     dark = (ROOT / "assets" / "example-async-jobs.svg").read_text()
     light = skin.convert(dark, "light")
     assert "#4CF490" not in light.upper() and "#EB6C36" in light.upper()
-    assert "opacity: 0.18;" in light and "opacity: 0.3;" not in light
+    glows = [l for l in light.splitlines() if "-glow {" in l]
+    assert glows and all("opacity: 0.18;" in l and "opacity: 0.3;" not in l for l in glows)
     back = skin.convert(light, "dark")
     assert back == dark, "light -> dark does not restore the original"
     shipped = (ROOT / "assets" / "example-async-jobs-light.svg").read_text()

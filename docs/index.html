@@ -115,7 +115,7 @@
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 07</span></a>
+    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 08</span></a>
     <div class="tools">
       <button type="button" data-skin="dark" aria-pressed="true">Dark</button>
       <button type="button" data-skin="light" aria-pressed="false">Light</button>
@@ -143,6 +143,7 @@
 <a class="chip" href="#gcp-streaming"><span class="n">05</span>Streaming on GCP</a>
 <a class="chip" href="#consistent-hashing"><span class="n">06</span>Consistent hashing</a>
 <a class="chip" href="#long-polling"><span class="n">07</span>Long polling</a>
+<a class="chip" href="#rag-on-gke"><span class="n">08</span>RAG on GKE</a>
 </nav>
 
 <div class="entries">
@@ -373,6 +374,39 @@
         <ul class="prims"><li>comparison panels</li><li>ambient stream vs story</li><li>held-state show window</li><li>waiting slot</li><li>labelled packets</li><li>re-poll chain</li></ul>
         <h3>Cut from the source</h3>
         <p class="cuts">WebSocket alternative, timeout-and-retry on the held request, message persistence, presence.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="rag-on-gke" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">08</span>Cloud architecture<span class="sep">·</span><span class="src">Google Cloud Architecture Center · RAG-capable generative AI app using GKE</span></div>
+    <h2>RAG on GKE</h2>
+    <p class="claim">Retrieval runs before generation; the model only ever sees a prompt already stuffed with the nearest chunks.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/rag-on-gke.svg" data-dark="diagrams/rag-on-gke.svg" data-light="diagrams/rag-on-gke-light.svg" alt="RAG on GKE animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/rag-on-gke.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/rag-on-gke.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 10 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>q1</td><td>packet</td><td class=num>0.2</td><td class=num>0.6</td><td>prompt reaches identity-aware proxy</td></tr><tr><td>q2</td><td>packet</td><td class=num>0.9</td><td class=num>1.2</td><td>authenticated request to the frontend</td></tr><tr><td>q3</td><td>packet</td><td class=num>1.5</td><td class=num>1.9</td><td>semantic search in pgvector</td></tr><tr><td>ph1</td><td>phase</td><td class=num>0</td><td class=num>2.8</td><td>1 · RETRIEVE</td></tr><tr><td>q4</td><td>packet</td><td class=num>2.4</td><td class=num>2.8</td><td>CHUNKS</td></tr><tr><td>q5</td><td>packet</td><td class=num>3.1</td><td class=num>3.5</td><td>contextualized prompt to the inference server</td></tr><tr><td>ph2</td><td>phase</td><td class=num>2.9</td><td class=num>5.6</td><td>2 · GENERATE</td></tr><tr><td>q6</td><td>packet</td><td class=num>4.7</td><td class=num>5.1</td><td>ANSWER</td></tr><tr><td>q7</td><td>packet</td><td class=num>5.4</td><td class=num>6.6</td><td>response returns through the proxy</td></tr><tr><td>ph3</td><td>phase</td><td class=num>5.7</td><td class=num>7.6</td><td>3 · RESPOND</td></tr><tr><td>s1</td><td>stream</td><td class=num></td><td class=num></td><td>raw docs pulled into the ray job</td></tr><tr><td>s2</td><td>stream</td><td class=num></td><td class=num></td><td>embeddings stored in cloud sql</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>two zones</li><li>packets</li><li>labelled reply</li><li>generate phase in amber</li><li>return corridor</li><li>two ambient streams</li><li>passive sink</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">Responsible AI service, logging / monitoring / analytics, chat interface as a separate box, Ray Data sharding step, Cloud Storage FUSE driver, external vs internal sources.</p>
       </div>
     </aside>
   </div>

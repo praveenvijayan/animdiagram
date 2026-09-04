@@ -122,6 +122,23 @@
         "re-poll chain"
       ],
       "cuts": "WebSocket alternative, timeout-and-retry on the held request, message persistence, presence."
+    },
+    {
+      "slug": "rag-on-gke",
+      "title": "RAG on GKE",
+      "category": "Cloud architecture",
+      "source": "Google Cloud Architecture Center · RAG-capable generative AI app using GKE",
+      "claim": "Retrieval runs before generation; the model only ever sees a prompt already stuffed with the nearest chunks.",
+      "primitives": [
+        "two zones",
+        "packets",
+        "labelled reply",
+        "generate phase in amber",
+        "return corridor",
+        "two ambient streams",
+        "passive sink"
+      ],
+      "cuts": "Responsible AI service, logging / monitoring / analytics, chat interface as a separate box, Ray Data sharding step, Cloud Storage FUSE driver, external vs internal sources."
     }
   ]
 }

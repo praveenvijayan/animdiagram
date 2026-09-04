@@ -1,0 +1,220 @@
+{
+ "loop": 10,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "q1",
+   "kind": "packet",
+   "note": "prompt reaches identity-aware proxy",
+   "at": 0.2,
+   "travel": 0.4,
+   "from": [
+    44,
+    180
+   ],
+   "to": [
+    112,
+    180
+   ],
+   "ring": false,
+   "glow": {
+    "x": 112,
+    "y": 152,
+    "w": 80,
+    "h": 56
+   }
+  },
+  {
+   "id": "q2",
+   "kind": "packet",
+   "note": "authenticated request to the frontend",
+   "after": "q1",
+   "travel": 0.3,
+   "from": [
+    192,
+    180
+   ],
+   "to": [
+    232,
+    180
+   ],
+   "glow": {
+    "x": 232,
+    "y": 152,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "q3",
+   "kind": "packet",
+   "note": "semantic search in pgvector",
+   "after": "q2",
+   "travel": 0.4,
+   "from": [
+    344,
+    172
+   ],
+   "to": [
+    400,
+    172
+   ],
+   "glow": {
+    "x": 400,
+    "y": 152,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 2.8,
+   "text": "1 · RETRIEVE",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "q4",
+   "kind": "packet",
+   "note": "nearest chunks come back",
+   "after": "q3",
+   "gap": 0.5,
+   "travel": 0.4,
+   "from": [
+    400,
+    188
+   ],
+   "to": [
+    344,
+    188
+   ],
+   "label": "CHUNKS",
+   "label_dy": 14
+  },
+  {
+   "id": "q5",
+   "kind": "packet",
+   "note": "contextualized prompt to the inference server",
+   "after": "q4",
+   "travel": 0.4,
+   "from": [
+    272,
+    208
+   ],
+   "to": [
+    272,
+    256
+   ],
+   "glow": {
+    "x": 232,
+    "y": 256,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2: the model generates",
+   "at": 2.9,
+   "until": 5.6,
+   "text": "2 · GENERATE",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "q6",
+   "kind": "packet",
+   "note": "answer after generation",
+   "after": "q5",
+   "gap": 1.2,
+   "travel": 0.4,
+   "from": [
+    304,
+    256
+   ],
+   "to": [
+    304,
+    208
+   ],
+   "label": "ANSWER",
+   "label_dy": -14
+  },
+  {
+   "id": "q7",
+   "kind": "packet",
+   "note": "response returns through the proxy",
+   "after": "q6",
+   "travel": 1.2,
+   "from": [
+    256,
+    152
+   ],
+   "via": [
+    [
+     256,
+     136
+    ],
+    [
+     40,
+     136
+    ]
+   ],
+   "to": [
+    40,
+    172
+   ]
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 5.7,
+   "until": 7.6,
+   "text": "3 · RESPOND",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "s1",
+   "kind": "stream",
+   "note": "raw docs pulled into the ray job",
+   "from": [
+    536,
+    284
+   ],
+   "to": [
+    512,
+    284
+   ],
+   "period": 1.6,
+   "count": 2,
+   "color": "#02BEFA",
+   "r": 2.5
+  },
+  {
+   "id": "s2",
+   "kind": "stream",
+   "note": "embeddings stored in cloud sql",
+   "from": [
+    456,
+    256
+   ],
+   "to": [
+    456,
+    208
+   ],
+   "period": 1.6,
+   "count": 2,
+   "color": "#02BEFA",
+   "r": 2.5,
+   "phase": 0.8
+  }
+ ]
+}

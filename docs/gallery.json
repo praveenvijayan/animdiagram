@@ -157,6 +157,22 @@
         "exchange phase in amber"
       ],
       "cuts": "Refresh-token rotation, token introspection, the attacker's failed replay (told in the caption instead), id_token / OpenID Connect claims, nonce."
+    },
+    {
+      "slug": "url-shortener",
+      "title": "URL shortener",
+      "category": "Flowchart",
+      "source": "System Design Interview · URL shortener, collision handling",
+      "claim": "A hash can collide; the flow re-salts and tries again until the short URL is unique, then saves once.",
+      "primitives": [
+        "flowchart layout (pills, boxes, diamonds)",
+        "decision branches with YES / NO labels",
+        "retry loop in amber",
+        "one token walks the path",
+        "untaken branch drawn cold",
+        "phase captions"
+      ],
+      "cuts": "Bloom filter before the DB lookup, the pre-generated key service alternative, rate limiting, the read path (short → long redirect)."
     }
   ]
 }

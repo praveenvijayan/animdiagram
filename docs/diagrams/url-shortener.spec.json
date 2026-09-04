@@ -1,0 +1,200 @@
+{
+ "loop": 8,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "f1",
+   "kind": "packet",
+   "note": "long url goes to the lookup",
+   "at": 0.2,
+   "travel": 0.4,
+   "from": [
+    120,
+    196
+   ],
+   "to": [
+    148,
+    196
+   ]
+  },
+  {
+   "id": "f2",
+   "kind": "packet",
+   "note": "not in the db: hash it",
+   "after": "f1",
+   "travel": 0.3,
+   "from": [
+    212,
+    196
+   ],
+   "to": [
+    240,
+    196
+   ],
+   "glow": {
+    "x": 240,
+    "y": 176,
+    "w": 80,
+    "h": 40
+   }
+  },
+  {
+   "id": "f3",
+   "kind": "packet",
+   "note": "check the short url for a clash",
+   "after": "f2",
+   "travel": 0.3,
+   "from": [
+    320,
+    196
+   ],
+   "to": [
+    348,
+    196
+   ]
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 2.3,
+   "text": "1 · LOOKUP · MISS",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "f4",
+   "kind": "packet",
+   "note": "clash: go re-salt",
+   "after": "f3",
+   "gap": 0.5,
+   "travel": 0.4,
+   "from": [
+    380,
+    164
+   ],
+   "to": [
+    380,
+    140
+   ],
+   "color": "#FBDC8E",
+   "glow": {
+    "x": 340,
+    "y": 100,
+    "w": 80,
+    "h": 40
+   }
+  },
+  {
+   "id": "f5",
+   "kind": "packet",
+   "note": "back to the hash function",
+   "after": "f4",
+   "travel": 0.6,
+   "from": [
+    340,
+    116
+   ],
+   "via": [
+    [
+     280,
+     116
+    ]
+   ],
+   "to": [
+    280,
+    176
+   ],
+   "color": "#FBDC8E",
+   "glow": {
+    "x": 240,
+    "y": 176,
+    "w": 80,
+    "h": 40
+   }
+  },
+  {
+   "id": "f6",
+   "kind": "packet",
+   "note": "second short url checked",
+   "after": "f5",
+   "travel": 0.3,
+   "from": [
+    320,
+    196
+   ],
+   "to": [
+    348,
+    196
+   ]
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2",
+   "at": 2.4,
+   "until": 4.6,
+   "text": "2 · CLASH · RE-SALT",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "f7",
+   "kind": "packet",
+   "note": "unique this time: save",
+   "after": "f6",
+   "gap": 0.5,
+   "travel": 0.3,
+   "from": [
+    412,
+    196
+   ],
+   "to": [
+    440,
+    196
+   ],
+   "glow": {
+    "x": 440,
+    "y": 176,
+    "w": 80,
+    "h": 40
+   }
+  },
+  {
+   "id": "f8",
+   "kind": "packet",
+   "note": "done",
+   "after": "f7",
+   "travel": 0.3,
+   "from": [
+    520,
+    196
+   ],
+   "to": [
+    548,
+    196
+   ],
+   "glow": {
+    "x": 548,
+    "y": 176,
+    "w": 64,
+    "h": 40,
+    "rx": 20
+   }
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 4.7,
+   "until": 6.4,
+   "text": "3 · UNIQUE · SAVE",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  }
+ ]
+}

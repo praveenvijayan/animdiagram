@@ -115,7 +115,7 @@
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 09</span></a>
+    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 10</span></a>
     <div class="tools">
       <button type="button" data-skin="dark" aria-pressed="true">Dark</button>
       <button type="button" data-skin="light" aria-pressed="false">Light</button>
@@ -145,6 +145,7 @@
 <a class="chip" href="#long-polling"><span class="n">07</span>Long polling</a>
 <a class="chip" href="#rag-on-gke"><span class="n">08</span>RAG on GKE</a>
 <a class="chip" href="#pkce-flow"><span class="n">09</span>PKCE flow</a>
+<a class="chip" href="#url-shortener"><span class="n">10</span>URL shortener</a>
 </nav>
 
 <div class="entries">
@@ -441,6 +442,39 @@
         <ul class="prims"><li>sequence layout (lifelines)</li><li>eight ordered messages</li><li>destination glow on participants</li><li>show windows for computations</li><li>phase captions</li><li>exchange phase in amber</li></ul>
         <h3>Cut from the source</h3>
         <p class="cuts">Refresh-token rotation, token introspection, the attacker&#x27;s failed replay (told in the caption instead), id_token / OpenID Connect claims, nonce.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="url-shortener" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">10</span>Flowchart<span class="sep">·</span><span class="src">System Design Interview · URL shortener, collision handling</span></div>
+    <h2>URL shortener</h2>
+    <p class="claim">A hash can collide; the flow re-salts and tries again until the short URL is unique, then saves once.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/url-shortener.svg" data-dark="diagrams/url-shortener.svg" data-light="diagrams/url-shortener-light.svg" alt="URL shortener animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/url-shortener.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/url-shortener.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 8 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>f1</td><td>packet</td><td class=num>0.2</td><td class=num>0.6</td><td>long url goes to the lookup</td></tr><tr><td>f2</td><td>packet</td><td class=num>0.9</td><td class=num>1.2</td><td>not in the db: hash it</td></tr><tr><td>f3</td><td>packet</td><td class=num>1.5</td><td class=num>1.8</td><td>check the short url for a clash</td></tr><tr><td>ph1</td><td>phase</td><td class=num>0</td><td class=num>2.3</td><td>1 · LOOKUP · MISS</td></tr><tr><td>f4</td><td>packet</td><td class=num>2.3</td><td class=num>2.7</td><td>clash: go re-salt</td></tr><tr><td>f5</td><td>packet</td><td class=num>3</td><td class=num>3.6</td><td>back to the hash function</td></tr><tr><td>f6</td><td>packet</td><td class=num>3.9</td><td class=num>4.2</td><td>second short url checked</td></tr><tr><td>ph2</td><td>phase</td><td class=num>2.4</td><td class=num>4.6</td><td>2 · CLASH · RE-SALT</td></tr><tr><td>f7</td><td>packet</td><td class=num>4.7</td><td class=num>5</td><td>unique this time: save</td></tr><tr><td>f8</td><td>packet</td><td class=num>5.3</td><td class=num>5.6</td><td>done</td></tr><tr><td>ph3</td><td>phase</td><td class=num>4.7</td><td class=num>6.4</td><td>3 · UNIQUE · SAVE</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>flowchart layout (pills, boxes, diamonds)</li><li>decision branches with YES / NO labels</li><li>retry loop in amber</li><li>one token walks the path</li><li>untaken branch drawn cold</li><li>phase captions</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">Bloom filter before the DB lookup, the pre-generated key service alternative, rate limiting, the read path (short → long redirect).</p>
       </div>
     </aside>
   </div>

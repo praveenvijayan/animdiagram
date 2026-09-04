@@ -1,0 +1,224 @@
+{
+ "loop": 8,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "m1",
+   "kind": "packet",
+   "note": "user publishes a post",
+   "at": 0.2,
+   "travel": 0.5,
+   "from": [
+    44,
+    148
+   ],
+   "to": [
+    96,
+    148
+   ],
+   "ring": false,
+   "glow": {
+    "x": 96,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "m2",
+   "kind": "packet",
+   "note": "post id handed to fanout",
+   "after": "m1",
+   "travel": 0.4,
+   "from": [
+    208,
+    148
+   ],
+   "to": [
+    248,
+    148
+   ],
+   "glow": {
+    "x": 248,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "m3",
+   "kind": "packet",
+   "note": "ask the graph db for friend ids",
+   "after": "m2",
+   "travel": 0.4,
+   "from": [
+    360,
+    140
+   ],
+   "to": [
+    400,
+    140
+   ],
+   "glow": {
+    "x": 400,
+    "y": 120,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 1.6,
+   "text": "1 · POST",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "m4",
+   "kind": "packet",
+   "note": "friend ids come back after a lookup",
+   "after": "m3",
+   "gap": 0.6,
+   "travel": 0.4,
+   "from": [
+    400,
+    156
+   ],
+   "to": [
+    360,
+    156
+   ]
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2",
+   "at": 1.7,
+   "until": 3.6,
+   "text": "2 · RESOLVE",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "m5",
+   "kind": "packet",
+   "note": "one message enqueued",
+   "after": "m4",
+   "travel": 0.5,
+   "from": [
+    304,
+    176
+   ],
+   "to": [
+    304,
+    224
+   ],
+   "glow": {
+    "x": 248,
+    "y": 224,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "m6a",
+   "kind": "packet",
+   "note": "worker writes alice's entry",
+   "after": "m5",
+   "gap": 0.8,
+   "travel": 0.7,
+   "from": [
+    428,
+    280
+   ],
+   "to": [
+    428,
+    352
+   ],
+   "glow": {
+    "x": 404,
+    "y": 352,
+    "w": 48,
+    "h": 20,
+    "rx": 6
+   }
+  },
+  {
+   "id": "m6b",
+   "kind": "packet",
+   "note": "…and bob's, at the same time",
+   "with": "m6a",
+   "travel": 0.7,
+   "from": [
+    488,
+    280
+   ],
+   "to": [
+    488,
+    352
+   ],
+   "glow": {
+    "x": 464,
+    "y": 352,
+    "w": 48,
+    "h": 20,
+    "rx": 6
+   }
+  },
+  {
+   "id": "m6c",
+   "kind": "packet",
+   "note": "…and cara's",
+   "with": "m6a",
+   "travel": 0.7,
+   "from": [
+    548,
+    280
+   ],
+   "to": [
+    548,
+    352
+   ],
+   "glow": {
+    "x": 524,
+    "y": 352,
+    "w": 48,
+    "h": 20,
+    "rx": 6
+   }
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 3.7,
+   "until": 6.4,
+   "text": "3 · FAN OUT",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "s1",
+   "kind": "stream",
+   "note": "workers never stop draining",
+   "from": [
+    360,
+    252
+   ],
+   "to": [
+    400,
+    252
+   ],
+   "period": 1.2,
+   "count": 3,
+   "color": "#02BEFA",
+   "r": 2.5
+  }
+ ]
+}

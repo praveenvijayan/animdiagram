@@ -2,6 +2,8 @@
 
 Looping animated SVG explainer diagrams as an [Agent Skill](https://skills.sh) — the "packets flowing between boxes" style of SpacetimeDB's *How does Spacetime scale* series, with the editorial discipline of [diagram-design](https://github.com/cathrynlavery/diagram-design).
 
+**Gallery:** [praveenvijayan.github.io/animdiagram](https://praveenvijayan.github.io/animdiagram/) — reference architectures redrawn as looping explainers.
+
 ![example: async job pipeline](assets/example-async-jobs.svg)
 
 <details><summary>Same diagram, light skin (one command)</summary>

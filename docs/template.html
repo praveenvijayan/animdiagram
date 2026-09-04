@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-skin="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>animdiagram · Gallery</title>
+<meta name="description" content="{{TAGLINE}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #0D0D0E; --panel: #141416; --frame: #202126; --rule: #363840;
+    --ink: #F4F6FC; --label: #B6C0CF; --muted: #6F7987; --signal: #4CF490;
+    --cyan: #02BEFA; --amber: #FBDC8E; --rose: #FF9E9E; --violet: #A880FF;
+    --mono: 'Source Code Pro', ui-monospace, Menlo, Consolas, monospace;
+    --sans: Inter, -apple-system, 'Segoe UI', sans-serif;
+  }
+  html[data-skin="light"] {
+    --paper: #F5F5F5; --panel: #FFFFFF; --frame: #D9DADB; --rule: #BFC0C0;
+    --ink: #2D3142; --label: #3B4054; --muted: #4F5D75; --signal: #15803D;
+    --cyan: #2E5AA8; --amber: #B8915A; --rose: #9C6B50; --violet: #6E6479;
+  }
+  *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { background: var(--paper); color: var(--label); font-family: var(--sans); font-size: 15px; line-height: 1.55;
+         -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .mono { font-family: var(--mono); }
+
+  /* ---- top bar */
+  .top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent);
+         backdrop-filter: blur(10px); border-bottom: 1px solid var(--frame); }
+  .top-inner { max-width: 1120px; margin: 0 auto; padding: 14px 24px 12px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; }
+  .brand { font-family: var(--mono); font-weight: 700; letter-spacing: 2px; color: var(--ink); font-size: 15px; text-decoration: none; }
+  .brand .tick { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin: 0 10px 2px 0;
+                 animation: tick 2.6s ease-in-out infinite; }
+  @keyframes tick { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+  .brand .g { color: var(--muted); font-weight: 400; letter-spacing: 1.5px; font-size: 10px; margin-left: 12px; }
+  .tabs { max-width: 1120px; margin: 0 auto; padding: 24px 24px 8px; display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--frame); }
+  .chip { font-family: var(--mono); font-size: 12px; letter-spacing: .5px; color: var(--muted); text-decoration: none;
+          border: 1px solid var(--rule); border-radius: 4px; padding: 7px 12px; transition: .12s; white-space: nowrap; }
+  .chip .n { font-size: 9px; letter-spacing: 1px; opacity: .55; margin-right: 8px; }
+  .chip:hover { color: var(--ink); border-color: var(--label); }
+  .chip.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .chip.active .n { opacity: .7; }
+  .tools { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+  .tools a, .tools button { font-family: var(--mono); font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+          background: transparent; border: 1px solid var(--rule); border-radius: 4px; padding: 5px 10px; cursor: pointer; text-decoration: none; transition: .12s; }
+  .tools a:hover, .tools button:hover { color: var(--ink); border-color: var(--label); }
+  .tools button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ---- hero */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 64px 24px 24px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end; }
+  .hero h1 { font-family: var(--mono); font-weight: 700; letter-spacing: 3px; color: var(--ink); font-size: clamp(26px, 4vw, 40px); line-height: 1.1; }
+  .hero p { margin-top: 16px; font-size: 17px; color: var(--muted); max-width: 52ch; }
+  .hero p b { color: var(--label); font-weight: 500; }
+  .install { font-family: var(--mono); font-size: 13px; color: var(--label); background: var(--panel); border: 1px solid var(--rule);
+             border-radius: 8px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+  .install span::before { content: "$ "; color: var(--muted); }
+  .install button { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; background: transparent;
+             color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 4px 8px; cursor: pointer; }
+  .install button:hover { color: var(--ink); border-color: var(--label); }
+  .facts { max-width: 1120px; margin: 0 auto; padding: 8px 24px 40px; display: flex; flex-wrap: wrap; gap: 8px 28px;
+           font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .facts span::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--signal); margin: 0 8px 2px 0; }
+
+  /* ---- entries */
+  .entry { max-width: 1120px; margin: 0 auto; padding: 32px 24px 56px; }
+  .entry[hidden] { display: none; }
+  .eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+  .eyebrow .n { color: var(--signal); margin-right: 10px; }
+  .eyebrow .sep { margin: 0 8px; opacity: .5; }
+  .eyebrow .src { text-transform: none; letter-spacing: .5px; }
+  .entry h2 { font-family: var(--mono); font-weight: 700; letter-spacing: 2px; color: var(--ink); font-size: 22px; margin-top: 10px; text-transform: uppercase; }
+  .claim { color: var(--muted); font-size: 16px; margin-top: 6px; max-width: 70ch; }
+  .entry-body { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
+  .fig { min-width: 0; }
+  .fig img { display: block; width: 100%; height: auto; border-radius: 12px; }
+  .fig figcaption { display: flex; gap: 16px; align-items: center; margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .5px; color: var(--muted); }
+  .fig figcaption a { text-decoration: none; }
+  .fig figcaption a:hover { color: var(--ink); }
+  .fig .loop { margin-left: auto; }
+  .ledger { min-width: 0; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 8px 40px; }
+  .ledger .wide { grid-column: 1 / -1; }
+  .ledger .col { min-width: 0; }
+  .ledger h3 { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 400; margin: 0 0 8px; }
+  .ledger h3 + * { margin-bottom: 22px; }
+  .ledger .hint { text-transform: none; letter-spacing: .5px; opacity: .7; margin-left: 6px; }
+  .prims { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+  .prims li { font-family: var(--mono); font-size: 10.5px; color: var(--label); border: 1px solid var(--rule); border-radius: 999px; padding: 3px 9px; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--frame); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 11px; }
+  th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--frame); white-space: nowrap; }
+  th { font-weight: 400; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; font-size: 9.5px; background: var(--panel); }
+  td:last-child { white-space: normal; color: var(--muted); font-family: var(--sans); font-size: 12px; }
+  tr:last-child td { border-bottom: 0; }
+  .num { text-align: right; }
+  .cuts { font-size: 13px; color: var(--muted); }
+
+  /* ---- footer */
+  footer { max-width: 1120px; margin: 0 auto; padding: 32px 24px 64px; border-top: 1px solid var(--frame);
+           font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 32px; }
+  footer a { text-decoration: none; color: var(--label); }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 1000px) {
+    .ledger { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .brand .tick { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#"><span class="tick"></span>{{NAME}}<span class="g">GALLERY · {{COUNT}}</span></a>
+    <div class="tools">
+      <button type="button" data-skin="dark" aria-pressed="true">Dark</button>
+      <button type="button" data-skin="light" aria-pressed="false">Light</button>
+      <a href="{{REPO}}" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>DIAGRAMS THAT<br>EXPLAIN IN TIME</h1>
+    <p>{{TAGLINE}} Packets travel along orthogonal connectors, rings mark arrivals, captions name the acts. <b>Hide the motion and the frame still reads.</b> Drop the file into an <code class="mono">&lt;img&gt;</code>, a README, a Substack post.</p>
+  </div>
+  <div class="install"><span id="cmd">{{INSTALL}}</span><button type="button" id="copy">copy</button></div>
+</section>
+<div class="facts">
+  <span>CSS keyframes only</span><span>no script · no SMIL · no fonts</span><span>reduced-motion safe</span><span>660 px · 4 px grid</span><span>dark authored · light derived</span>
+</div>
+
+<nav class="tabs" id="tabs" aria-label="Diagrams">
+{{CHIPS}}
+</nav>
+
+<div class="entries">
+{{SECTIONS}}
+</div>
+
+<footer>
+  <span>Each figure is redrawn from a public reference architecture, cut to one claim per loop.</span>
+  <a href="{{REPO}}" target="_blank" rel="noopener">{{NAME}} on GitHub</a>
+  <a href="https://github.com/cathrynlavery/diagram-design" target="_blank" rel="noopener">design discipline: diagram-design</a>
+  <a href="https://spacetimedb.com/blog" target="_blank" rel="noopener">motion style: SpacetimeDB</a>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btns = document.querySelectorAll('.tools button[data-skin]');
+    function setSkin(s) {
+      root.setAttribute('data-skin', s);
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.skin === s)); });
+      document.querySelectorAll('.fig img').forEach(function (img) { img.src = img.dataset[s]; });
+      try { localStorage.setItem('animdiagram-skin', s); } catch (e) {}
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { setSkin(b.dataset.skin); }); });
+    var saved = null; try { saved = localStorage.getItem('animdiagram-skin'); } catch (e) {}
+    if (saved === 'light' || saved === 'dark') setSkin(saved);
+
+    var copy = document.getElementById('copy');
+    copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(document.getElementById('cmd').textContent).then(function () {
+        copy.textContent = 'copied'; setTimeout(function () { copy.textContent = 'copy'; }, 1400);
+      });
+    });
+
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+    var entries = Array.prototype.slice.call(document.querySelectorAll('.entry'));
+    function show(id, scroll) {
+      var hit = entries.some(function (e) { return e.id === id; });
+      if (!hit) id = entries[0].id;
+      entries.forEach(function (e) {
+        var on = e.id === id;
+        e.hidden = !on;
+        if (on) { var img = e.querySelector('.fig img'); img.src = img.src; }  /* restart the loop from 0 */
+      });
+      chips.forEach(function (c) { c.classList.toggle('active', c.getAttribute('href') === '#' + id); });
+      if (scroll) document.getElementById('tabs').scrollIntoView({ block: 'start' });
+    }
+    chips.forEach(function (c) {
+      c.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        var id = c.getAttribute('href').slice(1);
+        history.replaceState(null, '', '#' + id);
+        show(id, true);
+      });
+    });
+    window.addEventListener('hashchange', function () { show(location.hash.slice(1), false); });
+    show(location.hash.slice(1), false);
+  })();
+</script>
+</body>
+</html>

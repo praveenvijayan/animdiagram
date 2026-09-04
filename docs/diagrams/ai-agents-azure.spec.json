@@ -1,0 +1,264 @@
+{
+ "loop": 10,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "a1",
+   "kind": "packet",
+   "note": "prompt hits the gateway",
+   "at": 0.2,
+   "travel": 0.4,
+   "from": [
+    44,
+    180
+   ],
+   "to": [
+    112,
+    180
+   ],
+   "ring": false,
+   "glow": {
+    "x": 112,
+    "y": 152,
+    "w": 96,
+    "h": 56
+   }
+  },
+  {
+   "id": "a2",
+   "kind": "packet",
+   "note": "gateway forwards to the agent pod",
+   "after": "a1",
+   "travel": 0.3,
+   "from": [
+    208,
+    180
+   ],
+   "to": [
+    232,
+    180
+   ],
+   "glow": {
+    "x": 232,
+    "y": 152,
+    "w": 140,
+    "h": 56
+   }
+  },
+  {
+   "id": "a3",
+   "kind": "packet",
+   "note": "agent asks the models for a plan",
+   "after": "a2",
+   "travel": 0.3,
+   "from": [
+    372,
+    172
+   ],
+   "to": [
+    400,
+    172
+   ],
+   "glow": {
+    "x": 400,
+    "y": 152,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "a4",
+   "kind": "packet",
+   "note": "models answer with a tool call after inference",
+   "after": "a3",
+   "gap": 0.5,
+   "travel": 0.3,
+   "from": [
+    400,
+    188
+   ],
+   "to": [
+    372,
+    188
+   ],
+   "label": "TOOL",
+   "label_dy": 13
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 3.0,
+   "text": "1 · PLAN",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "a5",
+   "kind": "packet",
+   "note": "agent retrieves from ai search",
+   "after": "a4",
+   "travel": 0.7,
+   "from": [
+    340,
+    208
+   ],
+   "via": [
+    [
+     340,
+     284
+    ]
+   ],
+   "to": [
+    400,
+    284
+   ],
+   "glow": {
+    "x": 400,
+    "y": 256,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "a6",
+   "kind": "packet",
+   "note": "documents come back",
+   "after": "a5",
+   "gap": 0.4,
+   "travel": 0.7,
+   "from": [
+    400,
+    300
+   ],
+   "via": [
+    [
+     356,
+     300
+    ]
+   ],
+   "to": [
+    356,
+    208
+   ],
+   "label": "DOCS",
+   "label_dy": 12
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2",
+   "at": 3.1,
+   "until": 5.2,
+   "text": "2 · RETRIEVE",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "a7",
+   "kind": "packet",
+   "note": "second model call with the docs",
+   "after": "a6",
+   "travel": 0.3,
+   "from": [
+    372,
+    172
+   ],
+   "to": [
+    400,
+    172
+   ],
+   "glow": {
+    "x": 400,
+    "y": 152,
+    "w": 112,
+    "h": 56
+   }
+  },
+  {
+   "id": "a8",
+   "kind": "packet",
+   "note": "answer returns through the gateway",
+   "after": "a7",
+   "gap": 0.6,
+   "travel": 1.2,
+   "from": [
+    272,
+    152
+   ],
+   "via": [
+    [
+     272,
+     136
+    ],
+    [
+     40,
+     136
+    ]
+   ],
+   "to": [
+    40,
+    172
+   ],
+   "label": "ANSWER"
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 5.3,
+   "until": 8.2,
+   "text": "3 · ANSWER",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "s1",
+   "kind": "stream",
+   "note": "conversation state written continuously",
+   "from": [
+    264,
+    208
+   ],
+   "to": [
+    264,
+    256
+   ],
+   "period": 1.4,
+   "count": 3,
+   "color": "#02BEFA",
+   "r": 2.5
+  },
+  {
+   "id": "s2",
+   "kind": "stream",
+   "note": "some tool calls leave through the firewall",
+   "from": [
+    356,
+    152
+   ],
+   "via": [
+    [
+     356,
+     128
+    ],
+    [
+     592,
+     128
+    ]
+   ],
+   "to": [
+    592,
+    152
+   ],
+   "period": 2.4,
+   "count": 2,
+   "color": "#FBDC8E",
+   "r": 2.5
+  }
+ ]
+}

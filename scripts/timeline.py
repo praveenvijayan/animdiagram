@@ -226,10 +226,12 @@ def compile_stream(ev, cfg, loop):
     r = ev.get("r", 3)
     phase = float(ev.get("phase", 0.0))  # extra delay offset in seconds
 
+    # Tokens fade in over the first 12% and out over the last 12% of the period,
+    # so the constant-speed waypoints are mapped into the visible 12–88% window.
     times = path_times(pts, 0.0, period)  # over one period
     lines = ["  0% { transform: translate(0, 0); opacity: 0; }", "  12% { opacity: 1; }"]
     for (x, y), t in zip(pts[1:-1], times[:-1]):
-        lines.append(f"  {pct(t, period)}% {{ {tr(x - src[0], y - src[1])} }}")
+        lines.append(f"  {fmt(12 + 76 * t / period)}% {{ {tr(x - src[0], y - src[1])} }}")
     dx, dy = dst[0] - src[0], dst[1] - src[1]
     lines.append(f"  88% {{ {tr(dx, dy)} opacity: 1; }}")
     lines.append(f"  100% {{ {tr(dx, dy)} opacity: 0; }}")

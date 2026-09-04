@@ -1,0 +1,220 @@
+{
+ "loop": 10,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "r1",
+   "kind": "packet",
+   "note": "first request reaches the limiter",
+   "at": 0.2,
+   "travel": 0.4,
+   "from": [
+    44,
+    148
+   ],
+   "to": [
+    112,
+    148
+   ],
+   "ring": false,
+   "glow": {
+    "x": 112,
+    "y": 120,
+    "w": 128,
+    "h": 56
+   }
+  },
+  {
+   "id": "r2",
+   "kind": "packet",
+   "note": "increment the client's counter",
+   "after": "r1",
+   "travel": 0.3,
+   "from": [
+    160,
+    176
+   ],
+   "to": [
+    160,
+    224
+   ],
+   "glow": {
+    "x": 112,
+    "y": 224,
+    "w": 128,
+    "h": 56
+   }
+  },
+  {
+   "id": "b1",
+   "kind": "bar",
+   "note": "window usage: 2/5 idle, 3/5 after r2, full after r6",
+   "steps": [
+    [
+     0,
+     0.4
+    ],
+    [
+     1.2,
+     0.6
+    ],
+    [
+     5.6,
+     1.0
+    ]
+   ],
+   "x": 124,
+   "y": 252,
+   "w": 104,
+   "h": 4,
+   "color": "#4CF490",
+   "at": 0
+  },
+  {
+   "id": "r3",
+   "kind": "packet",
+   "note": "count comes back under the limit",
+   "after": "r2",
+   "travel": 0.3,
+   "from": [
+    192,
+    224
+   ],
+   "to": [
+    192,
+    176
+   ],
+   "label": "3/5"
+  },
+  {
+   "id": "r4",
+   "kind": "packet",
+   "note": "forwarded to the api servers",
+   "after": "r3",
+   "travel": 1.0,
+   "from": [
+    240,
+    148
+   ],
+   "to": [
+    464,
+    148
+   ],
+   "glow": {
+    "x": 464,
+    "y": 120,
+    "w": 128,
+    "h": 56
+   }
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 3.4,
+   "text": "1 · ALLOW",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "r5",
+   "kind": "packet",
+   "note": "a later request in the same window",
+   "at": 4.6,
+   "travel": 0.4,
+   "from": [
+    44,
+    148
+   ],
+   "to": [
+    112,
+    148
+   ],
+   "ring": false,
+   "glow": {
+    "x": 112,
+    "y": 120,
+    "w": 128,
+    "h": 56
+   }
+  },
+  {
+   "id": "r6",
+   "kind": "packet",
+   "note": "increment again",
+   "after": "r5",
+   "travel": 0.3,
+   "from": [
+    160,
+    176
+   ],
+   "to": [
+    160,
+    224
+   ],
+   "glow": {
+    "x": 112,
+    "y": 224,
+    "w": 128,
+    "h": 56
+   }
+  },
+  {
+   "id": "r7",
+   "kind": "packet",
+   "note": "count comes back over the limit",
+   "after": "r6",
+   "travel": 0.3,
+   "from": [
+    192,
+    224
+   ],
+   "to": [
+    192,
+    176
+   ],
+   "label": "6/5",
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "r8",
+   "kind": "packet",
+   "note": "429 goes straight back to the client",
+   "after": "r7",
+   "travel": 1.0,
+   "from": [
+    176,
+    120
+   ],
+   "via": [
+    [
+     176,
+     96
+    ],
+    [
+     40,
+     96
+    ]
+   ],
+   "to": [
+    40,
+    140
+   ],
+   "label": "429",
+   "color": "#FF9E9E"
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2",
+   "at": 4.5,
+   "until": 7.8,
+   "text": "2 · REFUSE",
+   "x": 632,
+   "y": 96,
+   "color": "#FF9E9E"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+  "site": {
+    "name": "animdiagram",
+    "tagline": "Looping animated SVG explainers. One file, one <style>, no script.",
+    "repo": "https://github.com/praveenvijayan/animdiagram",
+    "install": "npx skills add praveenvijayan/animdiagram"
+  },
+  "entries": [
+    {
+      "slug": "news-feed-fanout",
+      "title": "News feed fan-out",
+      "category": "System design",
+      "source": "System Design Interview · news feed, fan-out on write",
+      "claim": "One post becomes N feed entries at write time, so every friend's read is a cache hit.",
+      "primitives": ["packets", "arrival rings", "destination glow", "tile glow", "simultaneous fan-out", "phase captions", "ambient stream"],
+      "cuts": "web tier, load balancer, DNS, notification service, user cache and user DB — the read path is a second diagram."
+    },
+    {
+      "slug": "rate-limiter",
+      "title": "Rate limiter",
+      "category": "System design",
+      "source": "System Design Interview · rate limiter middleware",
+      "claim": "Over the limit, the middleware answers 429 itself; the API servers only ever see the allowed share.",
+      "primitives": ["packets", "labelled packets", "growing bar", "colour lanes", "return corridor", "phase captions"],
+      "cuts": "rules store and rule-refresh workers, drop-vs-queue option for refused requests."
+    },
+    {
+      "slug": "ai-agents-azure",
+      "title": "AI agents at scale",
+      "category": "Cloud architecture",
+      "source": "Azure Architecture Center · AI agents at scale (AKS + Foundry)",
+      "claim": "The prompt crosses the gateway once; everything after it stays on private endpoints inside the VNet.",
+      "primitives": ["zone boundary", "packets with waypoints", "labelled reply", "two ambient streams", "boundary crossing", "phase captions", "passive sinks"],
+      "cuts": "load balancer, container registry, key vault, storage, Redis, Entra ID, Monitor / App Insights, private DNS, DDoS plan."
+    }
+  ]
+}

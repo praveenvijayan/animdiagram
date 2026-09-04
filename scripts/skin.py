@@ -26,7 +26,7 @@ DARK_TO_LIGHT = {
     "#F4F6FC": "#2D3142",   # ink
     "#B6C0CF": "#3B4054",   # label (distinct from ink so the swap is reversible)
     "#6F7987": "#4F5D75",   # muted
-    "#4CF490": "#EB6C36",   # signal
+    "#4CF490": "#15803D",   # signal (green stays the success colour on light paper; orange reads as error)
     "#02BEFA": "#2E5AA8",   # lane-cyan
     "#FBDC8E": "#B8915A",   # lane-amber
     "#FF9E9E": "#9C6B50",   # lane-rose
@@ -35,7 +35,7 @@ DARK_TO_LIGHT = {
     "#FF4C4C": "#C0392B",   # alarm
     "rgba(168,128,255,0.1)": "rgba(110,100,121,0.08)",
     "rgba(168,128,255,0.5)": "rgba(110,100,121,0.5)",
-    "rgba(76,244,144,0.3)": "rgba(235,108,54,0.45)",
+    "rgba(76,244,144,0.3)": "rgba(21,128,61,0.45)",
     "(dark skin)": "(light skin)",
 }
 GLOW_PEAK = {"light": "0.18", "dark": "0.3"}

@@ -136,19 +136,19 @@
 
   <!-- api -->
   <rect x="96" y="120" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="110" cy="137" r="2.5" fill="#EB6C36" class="tick" style="animation-delay:-0.0s"/>
+  <circle cx="110" cy="137" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0.0s"/>
   <text class="t-name" x="120" y="140">API</text>
   <text class="t-desc" x="108" y="160">validate · 202</text>
 
   <!-- queue -->
   <rect x="248" y="120" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="262" cy="137" r="2.5" fill="#EB6C36" class="tick" style="animation-delay:-0.7s"/>
+  <circle cx="262" cy="137" r="2.5" fill="#15803D" class="tick" style="animation-delay:-0.7s"/>
   <text class="t-name" x="272" y="140">QUEUE</text>
   <text class="t-desc" x="260" y="160">durable · fifo</text>
 
   <!-- worker -->
   <rect x="400" y="120" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="414" cy="137" r="2.5" fill="#EB6C36" class="tick" style="animation-delay:-1.4s"/>
+  <circle cx="414" cy="137" r="2.5" fill="#15803D" class="tick" style="animation-delay:-1.4s"/>
   <text class="t-name" x="424" y="140">WORKER</text>
   <text class="t-desc" x="412" y="160">pull · retry</text>
 
@@ -159,7 +159,7 @@
 
   <!-- db -->
   <rect x="400" y="224" width="112" height="56" rx="7" fill="#FFFFFF" stroke="#BFC0C0"/>
-  <circle cx="414" cy="241" r="2.5" fill="#EB6C36" class="tick" style="animation-delay:-2.1s"/>
+  <circle cx="414" cy="241" r="2.5" fill="#15803D" class="tick" style="animation-delay:-2.1s"/>
   <text class="t-name" x="424" y="244">DATABASE</text>
   <text class="t-desc" x="412" y="264">commit · ack</text>
 
@@ -171,34 +171,34 @@
   <text class="t-prose" x="330" y="308" text-anchor="middle">The 202 leaves before the worker even sees the job; durability is confirmed later, out of the request path.</text>
 
   <!-- @motion:elements -->
-  <circle cx="44" cy="148" r="4" fill="#EB6C36" class="pkt" style="animation-name:m1"/>
-  <rect x="96" y="120" width="112" height="56" rx="6" fill="#EB6C36" class="glow" style="animation-name:m1-glow"/>
-  <circle cx="208" cy="148" r="4" fill="#EB6C36" class="pkt" style="animation-name:m2"/>
-  <circle cx="248" cy="148" r="10" fill="none" stroke="#EB6C36" stroke-width="1.5" class="ring" style="animation-name:m2-ring"/>
-  <rect x="248" y="120" width="112" height="56" rx="6" fill="#EB6C36" class="glow" style="animation-name:m2-glow"/>
+  <circle cx="44" cy="148" r="4" fill="#15803D" class="pkt" style="animation-name:m1"/>
+  <rect x="96" y="120" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:m1-glow"/>
+  <circle cx="208" cy="148" r="4" fill="#15803D" class="pkt" style="animation-name:m2"/>
+  <circle cx="248" cy="148" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:m2-ring"/>
+  <rect x="248" y="120" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:m2-glow"/>
   <g class="pkt" style="animation-name:m3">
-    <circle cx="152" cy="120" r="4" fill="#EB6C36"/>
-    <text class="t-tag" x="152" y="108" text-anchor="middle" fill="#EB6C36">202</text>
+    <circle cx="152" cy="120" r="4" fill="#15803D"/>
+    <text class="t-tag" x="152" y="108" text-anchor="middle" fill="#15803D">202</text>
   </g>
-  <circle cx="40" cy="140" r="10" fill="none" stroke="#EB6C36" stroke-width="1.5" class="ring" style="animation-name:m3-ring"/>
-  <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#EB6C36" style="animation-name:ph1;opacity:0">1 · ACCEPT</text>
-  <circle cx="360" cy="148" r="4" fill="#EB6C36" class="pkt" style="animation-name:m4"/>
-  <circle cx="400" cy="148" r="10" fill="none" stroke="#EB6C36" stroke-width="1.5" class="ring" style="animation-name:m4-ring"/>
-  <rect x="400" y="120" width="112" height="56" rx="6" fill="#EB6C36" class="glow" style="animation-name:m4-glow"/>
-  <circle cx="436" cy="176" r="4" fill="#EB6C36" class="pkt" style="animation-name:m5"/>
-  <circle cx="436" cy="224" r="10" fill="none" stroke="#EB6C36" stroke-width="1.5" class="ring" style="animation-name:m5-ring"/>
-  <rect x="400" y="224" width="112" height="56" rx="6" fill="#EB6C36" class="glow" style="animation-name:m5-glow"/>
-  <circle cx="476" cy="224" r="4" fill="#EB6C36" class="pkt" style="animation-name:m6"/>
-  <circle cx="476" cy="176" r="10" fill="none" stroke="#EB6C36" stroke-width="1.5" class="ring" style="animation-name:m6-ring"/>
+  <circle cx="40" cy="140" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:m3-ring"/>
+  <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#15803D" style="animation-name:ph1;opacity:0">1 · ACCEPT</text>
+  <circle cx="360" cy="148" r="4" fill="#15803D" class="pkt" style="animation-name:m4"/>
+  <circle cx="400" cy="148" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:m4-ring"/>
+  <rect x="400" y="120" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:m4-glow"/>
+  <circle cx="436" cy="176" r="4" fill="#15803D" class="pkt" style="animation-name:m5"/>
+  <circle cx="436" cy="224" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:m5-ring"/>
+  <rect x="400" y="224" width="112" height="56" rx="6" fill="#15803D" class="glow" style="animation-name:m5-glow"/>
+  <circle cx="476" cy="224" r="4" fill="#15803D" class="pkt" style="animation-name:m6"/>
+  <circle cx="476" cy="176" r="10" fill="none" stroke="#15803D" stroke-width="1.5" class="ring" style="animation-name:m6-ring"/>
   <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#B8915A" style="animation-name:ph2;opacity:0">2 · PROCESS</text>
-  <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#EB6C36" style="animation-name:ph3;opacity:0">3 · DURABLE</text>
+  <text class="t-tag story" x="632" y="96" text-anchor="end" fill="#15803D" style="animation-name:ph3;opacity:0">3 · DURABLE</text>
   <circle cx="512" cy="148" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.2s;animation-delay:-0s"/>
   <circle cx="512" cy="148" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.2s;animation-delay:-0.4s"/>
   <circle cx="512" cy="148" r="2.5" fill="#2E5AA8" class="pkt" style="animation-name:s1;animation-duration:1.2s;animation-delay:-0.8s"/>
   <!-- @/motion:elements -->
 
   <!-- legend strip -->
-  <circle cx="36" cy="336" r="4" fill="#EB6C36"/>
+  <circle cx="36" cy="336" r="4" fill="#15803D"/>
   <text class="t-name" x="46" y="340">JOB MESSAGES</text>
   <circle cx="176" cy="336" r="2.5" fill="#2E5AA8"/>
   <text class="t-name" x="186" y="340">METRICS STREAM</text>

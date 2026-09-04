@@ -36,7 +36,7 @@ Maps to the diagram-design default palette so animated and static figures in one
 | `ink` | `#2D3142` |
 | `label` | `#3B4054` |
 | `muted` | `#4F5D75` |
-| `signal` | `#EB6C36` (atomic tangerine) |
+| `signal` | `#15803D` (green, 4.6:1 on paper; orange would read as an error state) |
 | `lane-cyan` | `#2E5AA8` |
 | `lane-amber` | `#B8915A` |
 | `lane-rose` | `#9C6B50` |

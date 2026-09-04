@@ -52,6 +52,6 @@
   <!-- @/motion:elements -->
 
   <!-- legend strip -->
-  <circle cx="36" cy="336" r="4" fill="#EB6C36"/>
+  <circle cx="36" cy="336" r="4" fill="#15803D"/>
   <text class="t-name" x="46" y="340">WHAT THE PACKETS ARE</text>
 </svg>

@@ -102,7 +102,7 @@ def test_templates_pass_check():
 def test_skin_round_trip():
     dark = (ROOT / "assets" / "example-async-jobs.svg").read_text()
     light = skin.convert(dark, "light")
-    assert "#4CF490" not in light.upper() and "#EB6C36" in light.upper()
+    assert "#4CF490" not in light.upper() and "#15803D" in light.upper()
     glows = [l for l in light.splitlines() if "-glow {" in l]
     assert glows and all("opacity: 0.18;" in l and "opacity: 0.3;" not in l for l in glows)
     back = skin.convert(light, "dark")

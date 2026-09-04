@@ -1,6 +1,6 @@
 # animdiagram
 
-Looping animated SVG explainer diagrams as an [Agent Skill](https://skills.sh) — the "packets flowing between boxes" style of SpacetimeDB's *How does Spacetime scale* series, with the editorial discipline of [diagram-design](https://github.com/cathrynlavery/diagram-design).
+Looping animated SVG explainer diagrams as an [Agent Skill](https://www.skills.sh/praveenvijayan/animdiagram/animdiagram) — the "packets flowing between boxes" style of SpacetimeDB's *How does Spacetime scale* series, with the editorial discipline of [diagram-design](https://github.com/cathrynlavery/diagram-design).
 
 **Gallery:** [praveenvijayan.github.io/animdiagram](https://praveenvijayan.github.io/animdiagram/) — reference architectures redrawn as looping explainers.
 
@@ -23,7 +23,7 @@ Looping animated SVG explainer diagrams as an [Agent Skill](https://skills.sh) �
 npx skills add praveenvijayan/animdiagram
 ```
 
-Works with Claude Code, Codex, Cursor, Gemini CLI, Copilot and every other agent [skills.sh](https://skills.sh) supports. Manual alternative:
+Works with Claude Code, Codex, Cursor, Gemini CLI, Copilot and every other agent [skills.sh](https://www.skills.sh/praveenvijayan/animdiagram/animdiagram) supports. Manual alternative:
 
 ```bash
 git clone https://github.com/praveenvijayan/animdiagram ~/.claude/skills/animdiagram

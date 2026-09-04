@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="360" viewBox="0 0 660 360" fill="none" role="img" aria-label="ONE OR TWO SENTENCES: what the reader sees happen over one loop, in story order">
+  <style>
+    /* ---- type ramp (light skin) --------------------------------------- */
+    text { font-family: 'Source Code Pro', ui-monospace, Menlo, Consolas, monospace; }
+    .t-title { font-size: 17px; font-weight: 700; letter-spacing: 2px; fill: #2D3142; }
+    .t-sub   { font-family: Inter, -apple-system, 'Segoe UI', sans-serif; font-size: 13px; fill: #4F5D75; }
+    .t-zone  { font-size: 9px; letter-spacing: 1.5px; fill: #4F5D75; }
+    .t-name  { font-size: 9px; letter-spacing: 1px; fill: #2D3142; }
+    .t-small { font-size: 8px; letter-spacing: 1px; fill: #4F5D75; }
+    .t-desc  { font-family: Inter, -apple-system, 'Segoe UI', sans-serif; font-size: 8.5px; fill: #4F5D75; }
+    .t-tag   { font-size: 7.5px; font-weight: 600; letter-spacing: 1px; }
+    .t-prose { font-family: Inter, -apple-system, 'Segoe UI', sans-serif; font-size: 10px; fill: #4F5D75; }
+    .t-badge { font-size: 8.5px; font-weight: 600; letter-spacing: 1px; fill: #6E6479; }
+
+    /* ---- motion base classes ----------------------------------------- */
+    .pkt   { animation-timing-function: linear; animation-iteration-count: infinite; }
+    .story { animation-timing-function: linear; animation-iteration-count: infinite; }
+    .ring  { transform-box: fill-box; transform-origin: center; opacity: 0;
+             animation-timing-function: linear; animation-iteration-count: infinite; }
+    .glow  { opacity: 0; animation-timing-function: linear; animation-iteration-count: infinite; }
+    .bar   { transform-box: fill-box; transform-origin: left;
+             animation-timing-function: linear; animation-iteration-count: infinite; }
+    .tick  { animation: tick 2.6s ease-in-out infinite; }
+    @keyframes tick { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* @motion:css */
+    /* @/motion:css */
+
+    @media (prefers-reduced-motion: reduce) {
+      .pkt, .ring, .glow { animation: none !important; visibility: hidden; }
+      .story { animation: none !important; }
+      text.story { visibility: hidden; }      /* stacked captions would overprint */
+      .bar   { animation: none !important; transform: scaleX(1); }
+      .tick  { animation: none !important; }
+    }
+  </style>
+
+  <!-- frame -->
+  <rect x="0.5" y="0.5" width="659" height="359" rx="12" fill="#F5F5F5" stroke="#BFC0C0"/>
+  <text class="t-title" x="28" y="42">TITLE IN CAPS</text>
+  <text class="t-sub" x="28" y="66">One sentence: the claim this animation demonstrates</text>
+
+  <!-- connectors: draw before nodes so they sit behind -->
+  <g stroke="#BFC0C0">
+  </g>
+
+  <!-- nodes -->
+
+  <!-- static state labels, phase labels, bars authored by hand go here -->
+
+  <!-- @motion:elements -->
+  <!-- @/motion:elements -->
+
+  <!-- legend strip -->
+  <circle cx="36" cy="336" r="4" fill="#EB6C36"/>
+  <text class="t-name" x="46" y="340">WHAT THE GREEN PACKETS ARE</text>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "animdiagram",
+  "description": "Looping, self-contained animated SVG explainer diagrams: packets travelling along orthogonal connectors with arrival rings and glows, phase captions, ambient streams and growing bars, on a shared CSS-keyframe story clock. Editorial discipline from diagram-design; motion style from SpacetimeDB's scaling series. Ships timeline.py (spec to keyframes), check.py (verifier) and preview.py (scrubber).",
+  "version": "1.0.0",
+  "author": { "name": "Praveen Vijayan", "url": "https://github.com/praveenvijayan" },
+  "homepage": "https://github.com/praveenvijayan/animdiagram",
+  "repository": "https://github.com/praveenvijayan/animdiagram",
+  "license": "MIT",
+  "keywords": ["diagrams", "svg", "animation", "css-keyframes", "explainer", "blog", "substack", "architecture", "sequence"]
+}

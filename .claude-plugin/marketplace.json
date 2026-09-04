@@ -1,0 +1,8 @@
+{
+  "name": "animdiagram",
+  "metadata": {
+    "description": "Looping animated SVG explainer diagrams — packets, rings, glows, phase captions on one CSS-keyframe story clock. No script, no build, works in <img>."
+  },
+  "owner": { "name": "Praveen Vijayan" },
+  "plugins": [ { "name": "animdiagram", "source": "./" } ]
+}

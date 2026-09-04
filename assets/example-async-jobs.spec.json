@@ -1,0 +1,16 @@
+{
+  "loop": 8,
+  "accent": "#4CF490",
+  "events": [
+    {"id": "m1", "kind": "packet", "note": "client submits a job", "at": 0.2, "travel": 0.5, "from": [44, 148], "to": [96, 148], "ring": false, "glow": {"x": 96, "y": 120, "w": 112, "h": 56}},
+    {"id": "m2", "kind": "packet", "note": "api enqueues it", "after": "m1", "travel": 0.4, "from": [208, 148], "to": [248, 148], "glow": {"x": 248, "y": 120, "w": 112, "h": 56}},
+    {"id": "m3", "kind": "packet", "note": "202 accepted goes straight back", "after": "m2", "gap": 0.1, "travel": 1.2, "label": "202", "from": [152, 120], "via": [[152, 96], [40, 96]], "to": [40, 140]},
+    {"id": "ph1", "kind": "phase", "note": "act 1", "at": 0, "until": 2.9, "text": "1 · ACCEPT", "x": 632, "y": 96, "color": "#4CF490"},
+    {"id": "m4", "kind": "packet", "note": "worker pulls the job", "at": 3.2, "travel": 0.4, "from": [360, 148], "to": [400, 148], "glow": {"x": 400, "y": 120, "w": 112, "h": 56}},
+    {"id": "m5", "kind": "packet", "note": "worker writes the result", "after": "m4", "travel": 0.5, "from": [436, 176], "to": [436, 224], "glow": {"x": 400, "y": 224, "w": 112, "h": 56}},
+    {"id": "m6", "kind": "packet", "note": "db acknowledges the commit", "after": "m5", "travel": 0.5, "from": [476, 224], "to": [476, 176]},
+    {"id": "ph2", "kind": "phase", "note": "act 2", "at": 3.0, "until": 5.9, "text": "2 · PROCESS", "x": 632, "y": 96, "color": "#FBDC8E"},
+    {"id": "ph3", "kind": "phase", "note": "act 3", "at": 6.0, "until": 7.8, "text": "3 · DURABLE", "x": 632, "y": 96, "color": "#4CF490"},
+    {"id": "s1", "kind": "stream", "note": "metrics never stop", "from": [512, 148], "to": [552, 148], "period": 1.2, "count": 3, "color": "#02BEFA", "r": 2.5}
+  ]
+}

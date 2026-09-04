@@ -115,7 +115,7 @@
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 08</span></a>
+    <a class="brand" href="#"><span class="tick"></span>animdiagram<span class="g">GALLERY · 09</span></a>
     <div class="tools">
       <button type="button" data-skin="dark" aria-pressed="true">Dark</button>
       <button type="button" data-skin="light" aria-pressed="false">Light</button>
@@ -144,6 +144,7 @@
 <a class="chip" href="#consistent-hashing"><span class="n">06</span>Consistent hashing</a>
 <a class="chip" href="#long-polling"><span class="n">07</span>Long polling</a>
 <a class="chip" href="#rag-on-gke"><span class="n">08</span>RAG on GKE</a>
+<a class="chip" href="#pkce-flow"><span class="n">09</span>PKCE flow</a>
 </nav>
 
 <div class="entries">
@@ -407,6 +408,39 @@
         <ul class="prims"><li>two subsystems + spanning cluster</li><li>packets</li><li>parallel safety check</li><li>labelled reply</li><li>generate phase in amber</li><li>return corridor</li><li>four ambient streams</li><li>inner tiles</li><li>passive sinks</li></ul>
         <h3>Cut from the source</h3>
         <p class="cuts">Nothing structural: every box in the source is present (chat interface and Ray parts as inner tiles, logging / monitoring / analytics as one sink with three tiles). Region label and the Google Cloud banner dropped. Over the skill&#x27;s budget on purpose: 9 story packets, 4 streams.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="entry" id="pkce-flow" hidden>
+  <div class="entry-head">
+    <div class="eyebrow"><span class="n">09</span>Sequence<span class="sep">·</span><span class="src">RFC 7636 · OAuth 2.0 authorization code flow with Proof Key for Code Exchange</span></div>
+    <h2>PKCE flow</h2>
+    <p class="claim">A public client proves it started the flow: the code is useless without the verifier only it holds.</p>
+  </div>
+  <div class="entry-body">
+    <figure class="fig">
+      <img src="diagrams/pkce-flow.svg" data-dark="diagrams/pkce-flow.svg" data-light="diagrams/pkce-flow-light.svg" alt="PKCE flow animated diagram" width="660" loading="lazy">
+      <figcaption>
+        <a href="diagrams/pkce-flow.svg" target="_blank" rel="noopener">open .svg ↗</a>
+        <a href="diagrams/pkce-flow.spec.json" target="_blank" rel="noopener">spec.json ↗</a>
+        <span class="loop">loop 12 s</span>
+      </figcaption>
+    </figure>
+    <aside class="ledger">
+      <div class="col">
+        <h3>Schedule <span class="hint">from spec.json</span></h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>id</th><th>kind</th><th class=num>start</th><th class=num>end</th><th>label / note</th></tr></thead>
+          <tbody><tr><td>n1</td><td>show</td><td class=num>0.2</td><td class=num>11.5</td><td>app derives verifier and challenge before anything is sent</td></tr><tr><td>m1</td><td>packet</td><td class=num>0.8</td><td class=num>1.3</td><td>authorization request carries the challenge, never the verifier</td></tr><tr><td>m2</td><td>packet</td><td class=num>1.7</td><td class=num>2.6</td><td>auth server shows the login and consent page</td></tr><tr><td>m3</td><td>packet</td><td class=num>3.4</td><td class=num>4.3</td><td>user authenticates and consents</td></tr><tr><td>m4</td><td>packet</td><td class=num>4.7</td><td class=num>5.2</td><td>redirect back with the authorization code and the state</td></tr><tr><td>ph1</td><td>phase</td><td class=num>0</td><td class=num>5.3</td><td>1 · AUTHORIZE</td></tr><tr><td>n2</td><td>show</td><td class=num>5.4</td><td class=num>11.5</td><td>app checks the state it sent</td></tr><tr><td>m5</td><td>packet</td><td class=num>5.8</td><td class=num>6.3</td><td>token request: code plus the original verifier</td></tr><tr><td>n3</td><td>show</td><td class=num>6.5</td><td class=num>11.5</td><td>server hashes the verifier and compares with the stored challenge</td></tr><tr><td>m6</td><td>packet</td><td class=num>6.8</td><td class=num>7.3</td><td>tokens issued only if the hash matches</td></tr><tr><td>ph2</td><td>phase</td><td class=num>5.4</td><td class=num>7.5</td><td>2 · EXCHANGE</td></tr><tr><td>m7</td><td>packet</td><td class=num>7.7</td><td class=num>8.6</td><td>api call with the bearer token</td></tr><tr><td>m8</td><td>packet</td><td class=num>9</td><td class=num>9.9</td><td>protected resource returned</td></tr><tr><td>ph3</td><td>phase</td><td class=num>7.6</td><td class=num>10.2</td><td>3 · CALL API</td></tr></tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <h3>Motion used</h3>
+        <ul class="prims"><li>sequence layout (lifelines)</li><li>eight ordered messages</li><li>destination glow on participants</li><li>show windows for computations</li><li>phase captions</li><li>exchange phase in amber</li></ul>
+        <h3>Cut from the source</h3>
+        <p class="cuts">Refresh-token rotation, token introspection, the attacker&#x27;s failed replay (told in the caption instead), id_token / OpenID Connect claims, nonce.</p>
       </div>
     </aside>
   </div>

@@ -141,6 +141,22 @@
         "passive sinks"
       ],
       "cuts": "Nothing structural: every box in the source is present (chat interface and Ray parts as inner tiles, logging / monitoring / analytics as one sink with three tiles). Region label and the Google Cloud banner dropped. Over the skill's budget on purpose: 9 story packets, 4 streams."
+    },
+    {
+      "slug": "pkce-flow",
+      "title": "PKCE flow",
+      "category": "Sequence",
+      "source": "RFC 7636 · OAuth 2.0 authorization code flow with Proof Key for Code Exchange",
+      "claim": "A public client proves it started the flow: the code is useless without the verifier only it holds.",
+      "primitives": [
+        "sequence layout (lifelines)",
+        "eight ordered messages",
+        "destination glow on participants",
+        "show windows for computations",
+        "phase captions",
+        "exchange phase in amber"
+      ],
+      "cuts": "Refresh-token rotation, token introspection, the attacker's failed replay (told in the caption instead), id_token / OpenID Connect claims, nonce."
     }
   ]
 }

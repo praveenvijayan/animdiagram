@@ -1,0 +1,235 @@
+{
+ "loop": 12,
+ "accent": "#4CF490",
+ "events": [
+  {
+   "id": "n1",
+   "kind": "show",
+   "note": "app derives verifier and challenge before anything is sent",
+   "at": 0.2,
+   "until": 11.5
+  },
+  {
+   "id": "m1",
+   "kind": "packet",
+   "note": "authorization request carries the challenge, never the verifier",
+   "at": 0.8,
+   "travel": 0.5,
+   "from": [
+    240,
+    208
+   ],
+   "to": [
+    392,
+    208
+   ],
+   "glow": {
+    "x": 336,
+    "y": 112,
+    "w": 112,
+    "h": 40
+   }
+  },
+  {
+   "id": "m2",
+   "kind": "packet",
+   "note": "auth server shows the login and consent page",
+   "after": "m1",
+   "gap": 0.4,
+   "travel": 0.9,
+   "from": [
+    392,
+    234
+   ],
+   "to": [
+    96,
+    234
+   ],
+   "glow": {
+    "x": 48,
+    "y": 112,
+    "w": 96,
+    "h": 40
+   }
+  },
+  {
+   "id": "m3",
+   "kind": "packet",
+   "note": "user authenticates and consents",
+   "after": "m2",
+   "gap": 0.8,
+   "travel": 0.9,
+   "from": [
+    96,
+    260
+   ],
+   "to": [
+    392,
+    260
+   ],
+   "glow": {
+    "x": 336,
+    "y": 112,
+    "w": 112,
+    "h": 40
+   }
+  },
+  {
+   "id": "m4",
+   "kind": "packet",
+   "note": "redirect back with the authorization code and the state",
+   "after": "m3",
+   "gap": 0.4,
+   "travel": 0.5,
+   "from": [
+    392,
+    286
+   ],
+   "to": [
+    240,
+    286
+   ],
+   "glow": {
+    "x": 192,
+    "y": 112,
+    "w": 96,
+    "h": 40
+   }
+  },
+  {
+   "id": "ph1",
+   "kind": "phase",
+   "note": "act 1",
+   "at": 0,
+   "until": 5.3,
+   "text": "1 · AUTHORIZE",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  },
+  {
+   "id": "n2",
+   "kind": "show",
+   "note": "app checks the state it sent",
+   "at": 5.4,
+   "until": 11.5
+  },
+  {
+   "id": "m5",
+   "kind": "packet",
+   "note": "token request: code plus the original verifier",
+   "after": "m4",
+   "gap": 0.6,
+   "travel": 0.5,
+   "from": [
+    240,
+    312
+   ],
+   "to": [
+    392,
+    312
+   ],
+   "glow": {
+    "x": 336,
+    "y": 112,
+    "w": 112,
+    "h": 40
+   }
+  },
+  {
+   "id": "n3",
+   "kind": "show",
+   "note": "server hashes the verifier and compares with the stored challenge",
+   "at": 6.5,
+   "until": 11.5
+  },
+  {
+   "id": "m6",
+   "kind": "packet",
+   "note": "tokens issued only if the hash matches",
+   "after": "m5",
+   "gap": 0.5,
+   "travel": 0.5,
+   "from": [
+    392,
+    338
+   ],
+   "to": [
+    240,
+    338
+   ],
+   "glow": {
+    "x": 192,
+    "y": 112,
+    "w": 96,
+    "h": 40
+   }
+  },
+  {
+   "id": "ph2",
+   "kind": "phase",
+   "note": "act 2",
+   "at": 5.4,
+   "until": 7.5,
+   "text": "2 · EXCHANGE",
+   "x": 632,
+   "y": 96,
+   "color": "#FBDC8E"
+  },
+  {
+   "id": "m7",
+   "kind": "packet",
+   "note": "api call with the bearer token",
+   "after": "m6",
+   "gap": 0.4,
+   "travel": 0.9,
+   "from": [
+    240,
+    364
+   ],
+   "to": [
+    544,
+    364
+   ],
+   "glow": {
+    "x": 496,
+    "y": 112,
+    "w": 96,
+    "h": 40
+   }
+  },
+  {
+   "id": "m8",
+   "kind": "packet",
+   "note": "protected resource returned",
+   "after": "m7",
+   "gap": 0.4,
+   "travel": 0.9,
+   "from": [
+    544,
+    390
+   ],
+   "to": [
+    240,
+    390
+   ],
+   "glow": {
+    "x": 192,
+    "y": 112,
+    "w": 96,
+    "h": 40
+   }
+  },
+  {
+   "id": "ph3",
+   "kind": "phase",
+   "note": "act 3",
+   "at": 7.6,
+   "until": 10.2,
+   "text": "3 · CALL API",
+   "x": 632,
+   "y": 96,
+   "color": "#4CF490"
+  }
+ ]
+}

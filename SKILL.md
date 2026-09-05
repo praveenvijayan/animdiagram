@@ -30,7 +30,15 @@ Assets: `assets/template.svg` (dark), `assets/template-light.svg`, worked exampl
 
 Use when motion carries the meaning: **order** (A before B), **propagation** (one write fans out), **waiting** (a packet parks until an ack), **contention** (two things want one slot), **accumulation** (a log grows), **failure and recovery** (a node dims, a role moves).
 
-Don't use for: a static architecture map (use diagram-design), a list of components, a chart, anything where the reader would learn the same from a paragraph. If the story has no "then", it doesn't loop.
+Don't use for: a static architecture map, a list of components, a chart, anything where the reader would learn the same from a paragraph. If the story has no "then", it doesn't loop.
+
+Hand-off between the three diagram skills:
+
+| Ask | Skill |
+|---|---|
+| Diagram must reflect real code, interactive viewer, reader-triggered trace, WebM export | archify |
+| Static editorial figure, brand-matched, any of 39 types, one-shot reveal at most | diagram-design |
+| Motion *is* the explanation: one looping sequence, single `.svg`, drops into `<img>` | **animdiagram** |
 
 **Explicit request only.** Never animate unprompted. Never route here from a generic "draw a diagram" ask.
 

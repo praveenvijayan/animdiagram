@@ -88,9 +88,11 @@ assets/
 
 Kinds: `packet` (with `via` waypoints, `label`, `ring`, `glow`), `stream`, `phase`, `show`, `pulse`, `bar`, `move`. Timing by `at`, `after` (+`gap`) or `with`. Full schema in [references/storyboard.md](references/storyboard.md).
 
-## If your agent already routes diagrams elsewhere
+## How this differs from archify and diagram-design
 
-Static figures belong to a static-diagram skill (diagram-design, archify…). This skill is for the case where motion *is* the explanation. If a global rule sends every "diagram" request to one skill, add one line: *animated / looping / explainer SVG → animdiagram*.
+[archify](https://github.com/tt-a1i/archify) compiles a typed JSON model (often extracted from a real codebase) into an interactive HTML viewer with finite, reader-triggered trace motion and static or WebM export; it is the tool for validated architecture maps. [diagram-design](https://github.com/cathrynlavery/diagram-design) is an editorial design system with 39 static diagram types, brand onboarding and strict taste gates; motion there is an optional one-shot reveal, never a loop. animdiagram takes diagram-design's discipline and produces a single self-contained `.svg` whose CSS-keyframe loop *is* the explanation: packets, rings and glows retelling one sequence every few seconds, with no viewer, no script and no export step.
+
+If a global rule sends every "diagram" request to one skill, add one line: *animated / looping / explainer SVG → animdiagram*.
 
 ## Credits
 

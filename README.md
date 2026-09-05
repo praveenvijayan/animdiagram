@@ -15,7 +15,7 @@ Looping animated SVG explainer diagrams as an [Agent Skill](https://www.skills.s
 - **One `.svg`, one `<style>`, CSS `@keyframes` only.** No script, no SMIL, no fonts to load, no build. Drops into `<img>`, Markdown, Substack, GitHub READMEs.
 - **Motion grammar**: packets on one shared story clock, arrival rings, destination glows, idle ticks, ambient streams, phase captions, growing bars, movers, state swaps.
 - **Design discipline**: deletion first, one accent colour, ≤ 9 nodes, 4px grid, orthogonal connectors, the static frame must read on its own (reduced-motion safe).
-- **Tooling**: `timeline.py` compiles a small JSON event list into keyframes; `check.py` verifies the file; `preview.py` gives you a scrubber to tune timing by eye.
+- **Tooling**: `timeline.py` compiles a small JSON event list into keyframes; `check.py` verifies the file; `preview.py` gives you a scrubber to tune timing by eye; `export.py` (opt-in) renders an MP4 for platforms that strip SVG animation.
 
 ## Install
 
@@ -52,6 +52,19 @@ python3 scripts/skin.py diagrams/my-story.svg --to light  # optional light varia
 
 Python 3.10+, no dependencies.
 
+### Optional: MP4 for Substack, LinkedIn, X
+
+Those platforms strip SVG animation. `export.py` renders the finished SVG frame-by-frame in headless Chromium (paused Web Animations, exact seek per frame) and pipes it into ffmpeg. Desktop is 1920×1080 landscape; mobile is 1080×1920 vertical.
+
+```bash
+python3 scripts/export.py --doctor                                   # what is installed
+python3 scripts/export.py diagrams/my-story.svg                      # my-story-desktop.mp4
+python3 scripts/export.py diagrams/my-story.svg --layout mobile      # my-story-mobile.mp4
+python3 scripts/export.py diagrams/my-story.svg --layout both --loops 2
+```
+
+Needs `pip install playwright && python3 -m playwright install chromium` (about 150 MB) and ffmpeg with libx264. Nothing is installed for you; without them `--doctor` says what is missing and the SVG workflow is unaffected. `--frames-dir DIR` writes a PNG sequence instead if you have Chromium but no ffmpeg. An 8 s loop at 30 fps takes about 6 s per layout and comes out around 100–200 KB.
+
 ## Layout
 
 ```
@@ -67,6 +80,7 @@ scripts/
   check.py                   verifier: XML, root attrs, forbidden content, keyframe ↔ reference, budgets, grid
   preview.py                 HTML wrapper with a timeline scrubber, light/dark bg, 2×
   skin.py                    derive the light (or dark) variant of a finished diagram
+  export.py                  opt-in MP4 render (desktop 1920×1080 / mobile 1080×1920) via Playwright + ffmpeg; --doctor checks deps
   test_timeline.py           smoke tests (python3 scripts/test_timeline.py)
 assets/
   template.svg               dark skeleton with motion markers

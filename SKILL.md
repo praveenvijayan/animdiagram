@@ -1,9 +1,9 @@
 ---
 name: animdiagram
-description: 'Create looping, self-contained animated SVG explainer diagrams (SpacetimeDB "how does it scale" style) — dark frame, monospace labels, packets travelling along orthogonal connectors with arrival rings and glows, phase labels, ambient streams, growing bars — for blog posts, Substack, READMEs and docs. Use when the user asks for an animated / looping / moving diagram, a "packets flowing" explainer, a message-sequence animation, or an SVG that plays in an <img> tag with no JavaScript. Pairs the diagram-design editorial discipline (density budget, one accent, 4px grid, orthogonal connectors) with a CSS-keyframe motion grammar and scripts: timeline.py (spec → keyframes), check.py (verifier), preview.py (scrubber), skin.py (dark ↔ light).'
+description: 'Create looping, self-contained animated SVG explainer diagrams (SpacetimeDB "how does it scale" style) — dark frame, monospace labels, packets travelling along orthogonal connectors with arrival rings and glows, phase labels, ambient streams, growing bars — for blog posts, Substack, READMEs and docs. Use when the user asks for an animated / looping / moving diagram, a "packets flowing" explainer, a message-sequence animation, or an SVG that plays in an <img> tag with no JavaScript. Pairs the diagram-design editorial discipline (density budget, one accent, 4px grid, orthogonal connectors) with a CSS-keyframe motion grammar and scripts: timeline.py (spec → keyframes), check.py (verifier), preview.py (scrubber), skin.py (dark ↔ light), export.py (opt-in MP4 render, desktop 16:9 or mobile 9:16, for Substack / LinkedIn / X where SVG animation is stripped).'
 license: MIT
 metadata:
-  version: "1.0"
+  version: "1.1"
 ---
 
 # animdiagram
@@ -69,8 +69,11 @@ Hand-off between the three diagram skills:
 7. **Tune by eye**: `python3 scripts/preview.py <slug>.svg --open`; scrub to each arrival, check rings land on box edges, labels don't collide, the rest gap reads as "idle", light-bg toggle if the post may be light. Adjust the spec, re-inject (idempotent), re-check.
 8. **Light variant** (only if the post is light): `python3 scripts/skin.py <slug>.svg --to light` writes `<slug>-light.svg`. Author in dark, derive light; never hand-edit two copies.
 9. **Ship** the `.svg` (optionally the `.spec.json` beside it for edits). Report the schedule table and any budget cuts.
+10. **MP4 render — only when asked, or when the user names a platform that strips SVG animation** (Substack, LinkedIn, X/Twitter, Slack, email). Run `python3 scripts/export.py --doctor` first. If anything is MISSING, print the one-line install hint it gives, hand over the `.svg`, and stop; never install on the user's behalf. If ready: `python3 scripts/export.py <slug>.svg --layout desktop|mobile|both` writes `<slug>-desktop.mp4` (1920×1080) and/or `<slug>-mobile.mp4` (1080×1920 vertical). Ask which layout if the destination is not obvious. `--loops 2` for players that do not loop. The SVG stays the primary deliverable; the MP4 is a derivative, never hand-edited.
 
-Output path: `diagrams/<kebab-slug>.svg` in the current project, or the scratchpad when there is no project.
+Output path: `diagrams/<kebab-slug>.svg` in the current project, or the scratchpad when there is no project. MP4s land beside the SVG.
+
+Steps 1–9 use stdlib-only Python 3.10+. Only `export.py` needs extras (Playwright + Chromium, ffmpeg with libx264); it checks for them and degrades to a clear message, so the skill works fully without them.
 
 ---
 
